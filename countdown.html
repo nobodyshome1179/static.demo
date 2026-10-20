@@ -205,10 +205,23 @@
   @media screen and (max-width:900px) {.palette-footer {width:calc(100% - 40px);grid-template-columns:1fr;gap:16px;}}
   @media screen and (max-width:700px) {.palette-footer {width:calc(100% - 24px);margin-bottom:24px;padding:20px 4px 0;}.palette-options {grid-template-columns:repeat(2,minmax(0,1fr));}.palette-option {min-height:54px;padding:8px;gap:8px;}.palette-swatch {width:20px;height:20px;}}
   @media print { @page {size:A3 landscape;margin:0} html,body{background:#050605!important;min-width:0;margin:0!important;padding:0!important} .ui,.palette-footer {display:none!important}.wrapper{width:100%;max-width:none;padding:0;margin:0}.poster{box-shadow:none;width:100vw;height:100vh;aspect-ratio:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact;}.guides{display:none!important}.motion-on .mesh,.motion-on .photo-scanline {animation:none!important} }
+  .topic-nav {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;}
+  .topic-nav a {display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0;min-height:66px;padding:12px 16px;border:1px solid #4a5048;background:#111610;color:var(--white);text-decoration:none;}
+  .topic-nav a:hover,.topic-nav a[aria-current="page"] {border-color:var(--neon);background:#1b221b;}
+  .topic-nav a[aria-current="page"] .topic-name {color:var(--neon);}
+  .topic-nav a:focus-visible {outline:2px solid var(--neon);outline-offset:3px;}
+  .topic-name {font-size:13px;font-weight:700;line-height:1.4;}
+  .topic-deadline {font:10px/1.3 Arial,sans-serif;letter-spacing:.08em;color:var(--muted);}
+  @media screen and (max-width:700px) {.topic-nav {gap:6px;}.topic-nav a {padding:10px 8px;min-height:64px;}.topic-name {font-size:11px;}.topic-deadline {font-size:9px;letter-spacing:0;}}
 </style>
 </head>
 <body>
 <header class="ui">
+  <nav class="topic-nav" aria-label="議題切換">
+    <a href="countdown.html" aria-current="page" aria-label="三月一號佔到中校缺就唸博班。"><span class="topic-name">博班宣言</span><span class="topic-deadline">2027.03.01</span></a>
+    <a href="bmi.html" aria-label="黃聖尹的BMI會小於等於27嗎？"><span class="topic-name">BMI ≤ 27</span><span class="topic-deadline">2028.07.01</span></a>
+    <a href="marriage.html" aria-label="鄭皓會結婚嗎？"><span class="topic-name">結婚議題</span><span class="topic-deadline">2028.07.01</span></a>
+  </nav>
 <!--   <nav class="controls" aria-label="海報操作">
     <button id="filterToggle" type="button" aria-pressed="true" title="切換照片的黑白科技風效果">原照濾鏡：ON</button>
     <button id="guideToggle" type="button" aria-pressed="false" title="顯示 3 mm 出血參考及 5% 安全區">出血參考線：OFF</button>
