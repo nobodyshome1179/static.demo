@@ -34,10 +34,10 @@
   .date-label {display:block;margin-bottom:1.3cqw;font-size:1.65cqw;font-weight:700;letter-spacing:.13em;color:var(--white);}
   .date-countdown {display:flex;gap:1.4cqw;align-items:baseline;}
   .date-countdown span {display:inline-flex;align-items:baseline;gap:.3cqw;}
-  .date-countdown strong {font-size:5.5cqw;line-height:1;font-weight:900;letter-spacing:-.075em;font-variant-numeric:tabular-nums;text-shadow:0 0 20px #a2fa0530;}
+  .date-countdown strong {font-size:5.5cqw;line-height:1;font-weight:900;letter-spacing:-.075em;font-variant-numeric:tabular-nums;text-shadow:0 0 20px color-mix(in srgb,var(--neon) 20%,transparent);}
   .date-countdown small {font-size:1.25cqw;font-weight:700;color:var(--white);letter-spacing:0;}
   .date-sub {position:absolute;left:5.55%;top:29.0%;z-index:4;font:700 1.11cqw/1.1 Arial,sans-serif;letter-spacing:.32em;color:#e4eae0;}
-  .mesh { position:absolute;z-index:3;right:11.4%;top:4%;width:15%;height:auto;aspect-ratio:1;}
+  .mesh { position:absolute;z-index:3;right:11.4%;top:4%;width:15%;height:auto;aspect-ratio:1;color:var(--neon);}
   .hatch {position:absolute;right:5.3%;top:8.9%;height:15%;width:6%;background:repeating-linear-gradient(132deg,transparent 0 10px,#c5cfc3 10.4px 11.5px,transparent 12px 19px);opacity:.68;}
   .mesh-caption {position:absolute;top:27.2%;right:5.35%;font:700 .85cqw Arial,sans-serif;letter-spacing:.21em;color:#9eaa9b;}
   /* A separate and reversible CSS overlay is the only photo treatment. */
@@ -53,7 +53,7 @@
   .photo-corner.tr {top:0;right:0;border-width:2px 2px 0 0}
   .photo-corner.bl {bottom:0;left:0;border-width:0 0 2px 2px}
   .photo-corner.br {bottom:0;right:0;border-width:0 2px 2px 0}
-  .photo-head {position:absolute;left:2.4%;top:3%;z-index:8;background:#070907b8;border:1px solid #caff0a67;padding:.7cqw 1.1cqw;font:700 1cqw Arial,sans-serif;letter-spacing:.19em;color:var(--neon)}
+  .photo-head {position:absolute;left:2.4%;top:3%;z-index:8;background:#070907b8;border:1px solid color-mix(in srgb,var(--neon) 40%,transparent);padding:.7cqw 1.1cqw;font:700 1cqw Arial,sans-serif;letter-spacing:.19em;color:var(--neon)}
   .photo-caption {position:absolute;left:2.4%;right:2.4%;bottom:3%;display:flex;justify-content:space-between;align-items:end;z-index:8;color:#eaf3e3;gap:20px;font:700 1.0cqw Arial,sans-serif;letter-spacing:.17em;text-shadow:0 1px 8px #000;}
   .photo-caption span {background:#040704b8;padding:.6cqw 1cqw}
   .photo-caption .mini-bars {height:1.6cqw;display:flex;gap:.32cqw;background:none;align-items:end;padding:0}
@@ -62,7 +62,7 @@
   .photo-index { position:absolute;left:5.35%;top:88.2%;z-index:6;font:700 .96cqw Arial,sans-serif;letter-spacing:.28em;color:#a9b6a4; }
   .quote-block { position:absolute;z-index:5;left:67.25%;right:5.1%;top:37.4%; }
   .quote-id {font:700 1.26cqw Arial,sans-serif;letter-spacing:.32em;color:var(--neon);display:flex;align-items:center;gap:1cqw;margin-bottom:2.3cqw;white-space:nowrap}
-  .quote-id::after {content:"";height:1px;background:#78F0BE;flex:1;}
+  .quote-id::after {content:"";height:1px;background:color-mix(in srgb,var(--neon) 57%,transparent);flex:1;}
   h1 { margin:0;font-size:4.67cqw;line-height:1.29;font-weight:900;letter-spacing:-.071em;white-space:nowrap;color:var(--white);text-shadow:0 2px 20px #0008; }
   h1 > span {display:block;}
   h1 .lime {color:var(--neon);}
@@ -77,7 +77,7 @@
   .bottom-rule::before {content:"";position:absolute;left:0;top:-2px;width:3.8cqw;height:4px;background:var(--neon)}
   .tiny-cross {position:absolute;right:4.7%;top:35%;z-index:2;color:var(--neon);opacity:.55;font:300 2cqw Arial,sans-serif;}
   .guides {pointer-events:none;display:none;position:absolute;inset:0;z-index:20;}
-  .guides::before {content:"";position:absolute;inset:var(--trimY) var(--trimX);border:2px dashed #caff0a;}
+  .guides::before {content:"";position:absolute;inset:var(--trimY) var(--trimX);border:2px dashed var(--neon);}
   .guides::after {content:"";position:absolute;inset:var(--safe);border:2px dashed #fcfff2;}
   .guides-on .guides {display:block;}
   .treatment-off .photo-treatment,.treatment-off .photo-scanline,.treatment-off .photo-noise {display:none!important;}
@@ -107,7 +107,7 @@
     .date {position:relative;inset:auto;grid-column:1;grid-row:3;white-space:normal;}
     .date-label {font-size:18px;line-height:1.6;letter-spacing:.1em;margin-bottom:20px;}
     .date-countdown {display:grid;grid-template-columns:1.25fr repeat(3,1fr);gap:0;max-width:640px;}
-    .date-countdown span {display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-left:18px;border-left:1px solid #caff0a38;}
+    .date-countdown span {display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-left:18px;border-left:1px solid color-mix(in srgb,var(--neon) 22%,transparent);}
     .date-countdown span:first-child {padding-left:0;border-left:0;}
     .date-countdown strong {font-size:clamp(36px,6.8cqw,84px);letter-spacing:-.055em;line-height:.9;}
     .date-countdown small {font-size:12px;font-weight:500;color:#b8c3b1;}
@@ -191,7 +191,20 @@
     .date-countdown span {padding-left:9px;}
     .date-sub {font-size:8px;}
   }
-  @media print { @page {size:A3 landscape;margin:0} html,body{background:#050605!important;min-width:0;margin:0!important;padding:0!important} .ui {display:none!important}.wrapper{width:100%;max-width:none;padding:0;margin:0}.poster{box-shadow:none;width:100vw;height:100vh;aspect-ratio:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact;}.guides{display:none!important}.motion-on .mesh,.motion-on .photo-scanline {animation:none!important} }
+  .palette-footer {width:min(1360px,calc(100% - 64px));margin:0 auto 40px;padding-top:24px;border-top:1px solid #929a8e40;display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;align-items:start;}
+  .palette-title {margin:0;color:var(--white);font:700 13px/1.4 Arial,sans-serif;letter-spacing:.12em;}
+  .palette-caption {margin:8px 0 0;color:var(--muted);font:600 10px/1.5 Arial,sans-serif;letter-spacing:.16em;}
+  .palette-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .palette-option {display:flex;align-items:center;gap:11px;min-height:58px;width:100%;padding:9px 12px;border:1px solid #4a5048;background:#111610;color:var(--white);text-align:left;cursor:pointer;transition:border-color .15s,background .15s;}
+  .palette-option:hover {border-color:var(--swatch);background:#1b221b;}
+  .palette-option:focus-visible {outline:2px solid var(--swatch);outline-offset:3px;}
+  .palette-option[aria-pressed="true"] {border-color:var(--swatch);background:#1b221b;}
+  .palette-swatch {width:24px;height:24px;flex:none;background:var(--swatch);box-shadow:0 0 18px color-mix(in srgb,var(--swatch) 28%,transparent);}
+  .palette-name {display:block;font-size:12px;font-weight:700;line-height:1.3;}
+  .palette-code {display:block;margin-top:3px;color:var(--muted);font:10px/1.2 Arial,sans-serif;letter-spacing:.06em;}
+  @media screen and (max-width:900px) {.palette-footer {width:calc(100% - 40px);grid-template-columns:1fr;gap:16px;}}
+  @media screen and (max-width:700px) {.palette-footer {width:calc(100% - 24px);margin-bottom:24px;padding:20px 4px 0;}.palette-options {grid-template-columns:repeat(2,minmax(0,1fr));}.palette-option {min-height:54px;padding:8px;gap:8px;}.palette-swatch {width:20px;height:20px;}}
+  @media print { @page {size:A3 landscape;margin:0} html,body{background:#050605!important;min-width:0;margin:0!important;padding:0!important} .ui,.palette-footer {display:none!important}.wrapper{width:100%;max-width:none;padding:0;margin:0}.poster{box-shadow:none;width:100vw;height:100vh;aspect-ratio:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact;}.guides{display:none!important}.motion-on .mesh,.motion-on .photo-scanline {animation:none!important} }
 </style>
 </head>
 <body>
@@ -207,7 +220,9 @@
   <article id="poster" class="poster" aria-label="三月一號佔到中校缺就唸博班。科技編輯風格格言海報">
     <div class="ambient" aria-hidden="true"></div>
     <div class="inner-border" aria-hidden="true"></div>
-    <div class="eyebrow"><span class="dot"></span><span class="eyebrow-detail">AN ORDINARY NIGHT / </span>AN EXTRAORDINARY STATEMENT <span class="dot"></span> VOL.001</div>
+    <div class="eyebrow">
+      <!-- <span class="dot"></span><span class="eyebrow-detail">AN ORDINARY NIGHT / </span>AN EXTRAORDINARY STATEMENT <span class="dot"></span> VOL.001 -->
+    </div>
     <div class="mini-icons" aria-hidden="true">
       <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M20 12h8v8h8v8h-8v8h-8v-8h-8v-8h8z"/></svg>
       <svg viewBox="0 0 48 48"><path d="M24 43S5 32 5 18a10 10 0 0 1 19-4 10 10 0 0 1 19 4c0 14-19 25-19 25z"/><path d="M8 24h9l4-7 6 14 4-7h9"/></svg>
@@ -225,7 +240,7 @@
     </div>
     <div class="date-sub">THE CONDITION / THE PROMISE / THE RECORD</div>
     <svg class="mesh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 999 999" role="img" aria-label="國防醫學大學校徽鏤空線稿">
-    <g fill="none" stroke="#78F0BE" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
     <path d="M550,50 556,50 555,55 546,56 545,61 554,62 554,66 545,65 544,70 554,72 553,75 544,75 544,82 586,86 586,81 577,80 577,76 587,76 587,69 579,69 578,64 588,65 588,60 579,59 579,55 597,56 594,80 594,87 597,87 596,102 586,101 587,90 581,89 540,85 539,96 530,95 531,80 535,81 538,51 550,50 Z"/>
     <path d="M459,52 461,52 462,61 467,62 468,66 458,65 455,57 453,57 448,58 447,68 445,68 444,70 438,69 438,66 442,65 441,55 459,52 Z"/>
     <path d="M558,53 560,53 566,58 576,55 576,59 572,61 574,64 576,64 575,68 573,68 567,63 557,67 557,62 562,61 560,58 558,58 558,53 Z"/>
@@ -808,9 +823,36 @@
     <div class="guides" aria-hidden="true"></div>
   </article>
 </main>
+<footer class="palette-footer" aria-label="海報主色選擇">
+  <div>
+    <h2 class="palette-title">主色選擇</h2>
+    <p class="palette-caption">ACCENT PALETTE / 06</p>
+  </div>
+  <div class="palette-options" role="group" aria-label="切換海報主色">
+    <button class="palette-option" type="button" data-color="#63E6FF" style="--swatch:#63E6FF" aria-pressed="false"><span class="palette-swatch" aria-hidden="true"></span><span><span class="palette-name">冰青藍</span><span class="palette-code">#63E6FF</span></span></button>
+    <button class="palette-option" type="button" data-color="#78F0BE" style="--swatch:#78F0BE" aria-pressed="true"><span class="palette-swatch" aria-hidden="true"></span><span><span class="palette-name">薄荷綠</span><span class="palette-code">#78F0BE</span></span></button>
+    <button class="palette-option" type="button" data-color="#FFD166" style="--swatch:#FFD166" aria-pressed="false"><span class="palette-swatch" aria-hidden="true"></span><span><span class="palette-name">琥珀金</span><span class="palette-code">#FFD166</span></span></button>
+    <button class="palette-option" type="button" data-color="#B9A0FF" style="--swatch:#B9A0FF" aria-pressed="false"><span class="palette-swatch" aria-hidden="true"></span><span><span class="palette-name">淡紫羅蘭</span><span class="palette-code">#B9A0FF</span></span></button>
+    <button class="palette-option" type="button" data-color="#FF9278" style="--swatch:#FF9278" aria-pressed="false"><span class="palette-swatch" aria-hidden="true"></span><span><span class="palette-name">珊瑚橘</span><span class="palette-code">#FF9278</span></span></button>
+    <button class="palette-option" type="button" data-color="#CAFF0A" style="--swatch:#CAFF0A" aria-pressed="false"><span class="palette-swatch" aria-hidden="true"></span><span><span class="palette-name">原版黃綠</span><span class="palette-code">#CAFF0A</span></span></button>
+  </div>
+</footer>
 <script>
 (function(){
   const poster=document.getElementById('poster');
+  const paletteButtons=[...document.querySelectorAll('.palette-option')];
+  function setAccent(color){
+    document.documentElement.style.setProperty('--neon',color);
+    for(const button of paletteButtons) button.setAttribute('aria-pressed',String(button.dataset.color===color));
+  }
+  try {
+    const saved=localStorage.getItem('declaration-accent');
+    if(paletteButtons.some(button=>button.dataset.color===saved)) setAccent(saved);
+  } catch (_) { /* Local files may not have storage access. */ }
+  for(const button of paletteButtons) button.addEventListener('click',()=>{
+    setAccent(button.dataset.color);
+    try { localStorage.setItem('declaration-accent',button.dataset.color); } catch (_) {}
+  });
   const target=new Date('2027-03-01T00:00:00+08:00').getTime();
   const countdown={days:document.getElementById('days'),hours:document.getElementById('hours'),minutes:document.getElementById('minutes'),seconds:document.getElementById('seconds')};
   function updateCountdown(){
@@ -825,6 +867,7 @@
   const cases=[['filterToggle','treatment-off','原照濾鏡'],['guideToggle','guides-on','出血參考線'],['motionToggle','motion-on','圖形微動態']];
   for(const [btnId,cl,label] of cases){
     const btn=document.getElementById(btnId);
+    if(!btn) continue;
     btn.addEventListener('click',()=>{
       const active=!poster.classList.contains(cl);
       poster.classList.toggle(cl,active);
