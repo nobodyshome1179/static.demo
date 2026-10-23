@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>有鼠請回答｜城市急診檢傷與處方箋 V5（模擬展示）</title>
+<title>有鼠請回答｜城市急診檢傷與處方箋 V6（模擬展示）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700&display=swap">
@@ -1361,6 +1361,78 @@ table.rank .shop.sm{display:inline-grid;width:18px;height:18px;font-size:10px;ma
   #locModal .mbox{width:100%;max-height:88vh;border-radius:20px 20px 0 0;padding-bottom:env(safe-area-inset-bottom)}
 }
 
+/* 手機版：輸入框至少 16px，iOS 才不會在聚焦時自動放大畫面 */
+@media (max-width:860px){
+  textarea,input[type=text],input[type=search],input:not([type]),select{font-size:16px !important}
+  #repModal{padding:0;align-items:flex-end}
+  #repModal .mbox{width:100%;max-height:92vh;border-radius:20px 20px 0 0;padding-bottom:env(safe-area-inset-bottom)}
+}
+
+/* 派案：接案追蹤 */
+.tk{display:grid;gap:5px;margin-top:6px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper)}
+.tk .prog{margin-top:0}
+.tk .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tksteps{display:flex;gap:3px;list-style:none;margin:0 0 4px;padding:0}
+.tksteps li{flex:1;font-size:11.5px;color:var(--muted);text-align:center;padding-top:5px;border-top:4px solid var(--line)}
+.tksteps li.done{border-top-color:var(--green)}
+.tksteps li.on{color:var(--ink);font-weight:700}
+.tkwho{display:flex;flex-wrap:wrap;gap:4px}
+.tkwho span{font-size:11.5px;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:0 8px}
+.chip.tk-open{color:var(--orange);border-color:currentColor;font-weight:700}
+.chip.tk-active{color:var(--blue);border-color:currentColor;font-weight:700}
+.chip.tk-verify{background:var(--lime);color:#2a2a2a;border-color:var(--edge);font-weight:700}
+.chip.tk-ok{color:var(--green-d);border-color:currentColor}
+.tksum{font-size:13px;margin:0 0 6px}
+.poptk{margin-top:12px;padding-top:10px;border-top:1.5px solid var(--edge)}
+.poptk h5{margin:0 0 6px;font-size:14px}
+.poptkrow{padding:8px 0;border-bottom:1.5px dashed var(--line)}
+.poptkrow .acts{display:flex;gap:6px;margin-top:6px}
+.poptk .btn,.tk .btn{min-height:34px;padding:4px 14px;font-size:13px}
+
+/* 餌站：近 6 週圖例、市府請求協助 */
+.hist .hs.blank{background:transparent;border-style:dashed;border-color:var(--muted)}
+.hlegend{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:6px;font-size:11.5px;color:var(--muted);line-height:1.6}
+.hlegend span{display:inline-flex;align-items:center;gap:4px}
+.hlegend .hs{display:inline-block;width:10px;height:10px;border:1px solid var(--edge);border-radius:3px}
+.hlegend .hs.blank{border-style:dashed;border-color:var(--muted)}
+.task.ask{border:1.5px solid var(--orange);border-radius:12px;padding:10px 12px;margin:6px 0;background:color-mix(in srgb,var(--orange) 8%,var(--paper))}
+.askchip{display:inline-block;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:2px}
+
+/* 派案與總覽：頂端固定的分類與篩選 */
+.qhead,.lvbar.stick{position:sticky;top:-12px;z-index:6;background:var(--paper);margin:-12px -16px 10px;padding:10px 16px 8px;border-bottom:1.5px solid var(--line)}
+.lvbar.stick{margin:0 -16px 12px;padding:8px 16px}
+.qhead .lvbar{margin:8px 0 0}
+.qtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--cream);border:1.5px solid var(--edge);border-radius:999px;padding:3px}
+.qtabs button{border:0;background:none;border-radius:999px;padding:5px 4px;font:inherit;font-size:13px;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:5px;cursor:pointer}
+.qtabs button[aria-selected=true]{background:var(--ink);color:var(--paper)}
+.qn{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--line);color:var(--ink);font:700 11px/18px var(--round);text-align:center}
+.qn.hot{background:var(--red);color:#fff}
+.qtabs button[aria-selected=true] .qn:not(.hot){background:var(--paper);color:var(--ink)}
+.qnotice{display:flex;justify-content:space-between;align-items:center;width:100%;margin:0 0 10px;padding:9px 12px;border:1.5px solid var(--red);border-radius:12px;background:color-mix(in srgb,var(--red) 10%,var(--paper));color:var(--ink);font:inherit;font-size:13.5px;cursor:pointer}
+.qnotice span{color:var(--red);font-weight:700}
+.qlink{display:block;width:100%;text-align:left;margin-top:6px;padding:6px 10px;border:1.5px dashed var(--line);border-radius:10px;background:var(--cream);color:var(--green-d);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.qgrp{margin:4px 0 8px}
+.mrow{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1.5px dashed var(--line)}
+.mrow.new{background:color-mix(in srgb,var(--l2) 10%,transparent);border-radius:10px;padding:10px 8px;margin-bottom:4px;border-bottom:0}
+.mrow .lvdot{margin-top:2px}
+.mrow .mb{display:grid;gap:2px;min-width:0}
+.mrow .mb b{font-size:13.5px}
+.mrow .meta,.mrow .mto{font-size:12px;color:var(--muted)}
+.mrow details{font-size:12px;color:var(--muted)}
+.mrow summary{cursor:pointer;color:var(--green-d);font-weight:700}
+.mrow .why{display:block;margin:4px 0}
+.macts{display:flex;flex-direction:column;gap:4px;align-items:stretch}
+.macts .btn{min-height:32px}
+.qdone{margin-top:10px}
+.qdone>summary,.qabout>summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);padding:6px 0}
+.qabout{margin-top:16px;border-top:1.5px solid var(--line);padding-top:6px}
+@media (max-width:860px){
+  #side.full:not(.min) .qhead,#side.full:not(.min) .lvbar.stick{top:-16px}
+  #side.full:not(.min) .qhead{margin:-16px -16px 10px}
+}
+
+.lgsub{margin:8px 0 4px;font-size:11.5px;font-weight:700;color:var(--muted)}
+
 /* 點數兌換彈窗 */
 #rdModal{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(30,24,18,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
 #rdModal[hidden]{display:none}
@@ -2419,9 +2491,11 @@ function drawBoundary() {
 const POPOPT = () => (wide() ? { maxWidth: 340, maxHeight: 440, autoPanPaddingTopLeft: [372, 70], autoPanPaddingBottomRight: [412, 100] } : { maxWidth: 300, maxHeight: 360, autoPanPadding: [12, 90] });
 function pop(e, html, at) {
   if (S.picking) { pickAt(e.latlng); return; }
+  S.popFn = html;
   showPop(html());
 }
-const openPop = (ll, html) => showPop(html);
+const openPop = (ll, html) => { S.popFn = null; showPop(html); };
+const refreshPop = () => { if (S.popFn && !$('#popModal').hidden) $('#popBody').innerHTML = S.popFn(); };
 function showPop(html) {
   $('#popBody').innerHTML = html;
   S.popFrom = S.popFrom || document.activeElement;
@@ -2461,7 +2535,7 @@ function popArea(a, W) {
     `<div class="tri mini l${a.lv}">${band(a.lv)}<div class="body"><span class="to">派給 ${esc(LV[a.lv].to)}</span><span class="act">${esc(LV[a.lv].act)}</span></div></div>
     <table>${row('本週通報', `1999 陳情 ${a.n1999} 筆、見鼠地圖 ${a.nRadar} 筆`)}${row('判讀線索', esc(tags || '沒有描述標籤'))}${row('分級依據', esc(a.why.join('；')))}${a.clue && a.lv < 5 ? row('現場建議', esc(TAG_ACT[a.clue])) : ''}</table>
     <div class="sevrow">${sevPill(a.sev)}<span class="muted">${a.reps.length > 1 ? `本格 ${a.reps.length} 筆中最嚴重的一筆` : '本格只有這一筆'}</span></div>${sevTable(a.sev)}
-    <div class="rep"><button type="button" class="btn" data-tryh="${a.h}">用這個位置試判</button></div></div>`;
+    ${popDispatch(a.h)}<div class="rep"><button type="button" class="btn" data-tryh="${a.h}">用這個位置試判</button></div></div>`;
 }
 function popRep(r, W) {
   const what = r.desc ? `「${r.desc}」` : r.src === 'radar' ? r.j.places.join('、') || '一般目擊' : '1999 開放資料沒有描述，只能依位置分級';
@@ -2520,12 +2594,17 @@ function popHeat(i, W) {
   const s = W.live(i), r = publicRisk(s);
   return head(i, '') + `<p class="big"><b style="color:${r.color}">${r.name}</b></p><p class="sub">${r.tip}。區域級別來自模擬監測資料，不代表單筆事件檢傷等級。</p><p class="sub">只顯示區域風險，不顯示個別通報位置。</p>${S.role === 'citizen' ? `<div class="rep"><button type="button" class="btn" data-rephere="${i}">在這一帶通報</button></div>` : ''}</div>`;
 }
+/* 近 6 週方格：沒人看＝虛線空格；有看但沒鼠跡＝綠色，和「沒人看」分得出來 */
+const histColor = st => (st === 'ok' || st === 'none' ? 'var(--green)' : stnColor(st));
+const histLegend = kind => `<div class="hlegend"><span><i class="hs blank"></i>沒人觀察</span>${Object.entries(M.ST[kind]).map(([k, n]) => `<span><i class="hs" style="background:${histColor(k)}"></i>${esc(n)}</span>`).join('')}</div>`;
+S.stPush = {};
 function popStation(x, w) {
   const s = x.s, K = KIND[s.kind], hist = [];
-  for (let k = Math.max(s.start, w - 5); k <= w; k++) hist.push(`<span class="hs" title="第 ${k} 週：${s.obs[k] ? M.ST[s.kind][s.obs[k].st] : '沒有觀察'}" style="background:${s.obs[k] ? stnColor(s.obs[k].st) : 'transparent'}"></span>`);
+  for (let k = Math.max(s.start, w - 5); k <= w; k++) hist.push(`<span class="hs${s.obs[k] ? '' : ' blank'}" title="第 ${k} 週：${s.obs[k] ? M.ST[s.kind][s.obs[k].st] : '沒有觀察'}" style="background:${s.obs[k] ? histColor(s.obs[k].st) : 'transparent'}"></span>`);
   const last = x.last ? `第 ${x.last.w} 週：${M.ST[s.kind][x.last.st]}（${x.last.by}）` : '還沒有觀察紀錄', al = x.last && M.ALERT[x.last.st];
   return `<div class="pop"><h4>${K} ${esc(s.code)}</h4><div class="sub">${esc(M.placeOf(s.hex))}一帶・第 ${s.start} 週起・${s.kind === 'bait' ? '社區環境衛生師投放' : '社區防鼠巡查員放置'}・模擬</div>
-    <table>${row('最近觀察', esc(last))}${row('近 6 週', `<span class="hist">${hist.join('')}</span>`)}${x.overdue ? row('提醒', '超過 2 週沒有人觀察') : ''}${al ? row('處置', esc(al)) : ''}${s.why ? row('說明', esc(s.why)) : ''}</table>
+    <table>${row('最近觀察', esc(last))}${row('近 6 週', `<span class="hist">${hist.join('')}</span>${histLegend(s.kind)}`)}${x.overdue ? row('提醒', '超過 2 週沒有人觀察') : ''}${al ? row('處置', esc(al)) : ''}${s.why ? row('說明', esc(s.why)) : ''}</table>
+    ${S.role === 'gov' && x.overdue ? `<div class="rep">${S.stPush[s.id] ? '<span class="chip">已推播，等待附近志工觀察</span>' : `<button type="button" class="btn solid" data-stpush="${s.id}">推播給附近志工觀察</button>`}</div>` : ''}
     ${s.kind === 'bait' ? '<div class="notice hot" style="margin-top:8px">投藥中：寵物請牽繩，兒童不要觸碰。看到死鳥、死蛇請通報，可能是二次中毒。</div>' : ''}
     ${S.role === 'citizen' ? `<div class="rep"><button type="button" class="btn solid" data-obs="${s.id}">我要觀察這個${s.kind === 'trap' ? '捕鼠籠' : '餌盒'}</button></div>` : ''}
     <p class="sub" style="margin-top:8px">只看不碰：不開盒、不碰餌、不碰籠。看到死鼠或毒餌外露請回報，由專業人員處理。</p></div>`;
@@ -2552,28 +2631,91 @@ function citizenTasks(W) {
   if (W.w === NW) seedTaskReviews(W);
   return proposedCitizenTasks(W).filter(t => S.taskReviews[t.id] === 'approved');
 }
+/* V5：已發布任務的接案追蹤（人數、狀態、名單皆為模擬；市民端加入或回報會同步反映） */
+S.tk = { verified: {}, redo: {}, pushed: {}, fresh: {} };
+// 這次瀏覽中才派發的任務，從 0 人開始招募；推播後模擬有人加入
+function tkSet(id, v) { S.taskReviews[id] = v; if (v === 'approved') S.tk.fresh[id] = true; else { delete S.tk.fresh[id]; delete S.tk.pushed[id]; } }
+S.trvF = 'approved';
+const govTasks = W => Td(M.GRID, M.AN, W.risk, W.clue, W.w).filter(t => xd[t.type].roles.includes('citizen'));
+const TK_STAGE = {
+  open: ['招募中', '還沒招滿，可以再推播給附近的防鼠志工。'],
+  active: ['進行中', '人數到齊，志工正在執行。'],
+  verify: ['待驗收', '志工已拍照回報，請確認照片後驗收。'],
+  ok: ['已驗收', '任務完成，志工已計點。']
+};
+const TK_WHO = ['防鼠志工・長者', '防鼠志工・居民', '社區防鼠巡查員', '防鼠志工・青年', '防鼠志工・店家'];
+function tkInfo(t) {
+  const me = S.card.joined.has(t.id) || S.card.finished.has(t.id);
+  const fresh = S.tk.fresh[t.id], st0 = fresh ? 'open' : t.status;
+  const n = Math.min(t.need, (fresh ? (S.tk.pushed[t.id] ? Math.ceil(t.need / 2) : 0) : st0 === 'open' ? t.joined : t.need) + (me && st0 === 'open' ? 1 : 0));
+  const stage = S.tk.verified[t.id] ? 'ok' : S.card.finished.has(t.id) ? 'verify' : S.tk.redo[t.id] ? 'active'
+    : st0 === 'done' ? 'ok' : st0 === 'verify' ? 'verify' : n >= t.need ? 'active' : 'open';
+  const who = [];
+  if (me) who.push(`${S.card.nick}（市民端示範帳號）`);
+  for (let k = who.length; k < n; k++) who.push(`${TK_WHO[(t.hex + k * 3) % TK_WHO.length]}・${['10/20', '10/21', '10/22', '10/23'][(t.hex + k) % 4]} 加入`);
+  return { n, stage, who, me };
+}
+function tkTrack(t, compact) {
+  const x = tkInfo(t), [lab, tip] = TK_STAGE[x.stage], steps = ['發布', '招募', '執行', '驗收'];
+  const at = { open: 1, active: 2, verify: 3, ok: 4 }[x.stage];
+  const acts = [];
+  if (x.stage === 'open') acts.push(S.tk.pushed[t.id] ? '<span class="chip">已推播給附近志工</span>' : `<button type="button" class="btn solid" data-tk-push="${esc(t.id)}">再推播給附近志工</button>`);
+  if (x.stage === 'verify') acts.push(`<button type="button" class="btn solid" data-tk-ok="${esc(t.id)}">驗收通過</button><button type="button" class="btn" data-tk-redo="${esc(t.id)}">退回補拍</button>`);
+  if (x.stage === 'open' || x.stage === 'active') acts.push(`<button type="button" class="btn" data-taskreview="returned" data-taskid="${esc(t.id)}">${x.n ? `撤回（通知已加入的 ${x.n} 人）` : '撤回發布'}</button>`);
+  return `<div class="tk"><ol class="tksteps" aria-label="任務進度">${steps.map((s, i) => `<li class="${i < at || x.stage === 'ok' ? 'done' : ''}${i === at && x.stage !== 'ok' ? ' on' : ''}">${s}</li>`).join('')}</ol>
+    <div class="between"><b>已接案 ${x.n}／${t.need} 人</b><span class="chip tk-${x.stage}">${lab}</span></div>
+    <div class="prog"><i style="width:${(x.n / t.need) * 100}%"></i></div><div class="muted">${tip}</div>
+    ${!compact && x.who.length ? `<div class="tkwho">${x.who.map(w => `<span>${esc(w)}</span>`).join('')}</div>` : ''}
+    ${acts.length ? `<div class="acts">${acts.join('')}</div>` : ''}</div>`;
+}
 function renderTaskApprovals() {
   const W = M.week(NW);
   seedTaskReviews(W);
-  const proposed = proposedCitizenTasks(W);
-  const pending = proposed.filter(t => !S.taskReviews[t.id]);
-  const approved = proposed.filter(t => S.taskReviews[t.id] === 'approved');
-  const rejected = proposed.filter(t => S.taskReviews[t.id] === 'returned');
-  const cards = proposed.slice(0, 8).map(t => {
-    const state = S.taskReviews[t.id];
-    const label = state === 'approved' ? '已核准發布' : state === 'returned' ? '已退回調整' : '待市府核准';
-    return `<article class="task"><div class="between"><b>${esc(TASK[t.type])}</b><span class="chip ${state === 'approved' ? 'ok' : ''}">${label}</span></div>
-      <span class="meta">${esc(t.place)}一帶・安全分級 ${esc(TIER[xd[t.type].tier])}・模擬建議</span>
-      <p class="muted">AI 依區域風險及通報線索提出任務建議；市府應確認必要性、執行安全與責任歸屬。</p>
-      <div class="acts">${state === 'approved' ? `<button type="button" class="btn" data-taskreview="returned" data-taskid="${esc(t.id)}">撤回發布</button>` : `<button type="button" class="btn solid" data-taskreview="approved" data-taskid="${esc(t.id)}">核准發布</button><button type="button" class="btn" data-taskreview="returned" data-taskid="${esc(t.id)}">退回調整</button>`}</div></article>`;
-  }).join('');
-  return `<section class="sec" aria-label="市府協作任務審核"><div class="between"><h3>協作任務審核</h3><span class="chip">示範流程</span></div>
-    <p class="lead">AI 提出任務建議，市府核准後才顯示於市民端。政府仍負責實際清運、防治、修繕與查核。</p>
-    <div class="chips"><span class="chip">待核准 ${pending.length}</span><span class="chip ok">已發布 ${approved.length}</span><span class="chip">退回 ${rejected.length}</span></div>
-    ${cards || '<p class="muted">目前沒有可審核的街區協作任務。</p>'}
+  const all = govTasks(W), st = x => S.taskReviews[x.id] || 'pending';
+  const G = { pending: all.filter(x => st(x) === 'pending'), approved: all.filter(x => st(x) === 'approved'), returned: all.filter(x => st(x) === 'returned') };
+  const F = [['pending', '待核准'], ['approved', '已發布・接案追蹤'], ['returned', '退回']];
+  const f = S.trvF, ord = { verify: 0, open: 1, active: 2, ok: 3 };
+  const list = f === 'approved' ? G.approved.slice().sort((a, b) => ord[tkInfo(a).stage] - ord[tkInfo(b).stage]) : G[f];
+  const cnt = k => G.approved.filter(x => tkInfo(x).stage === k).length;
+  const cards = list.slice(0, 8).map(x => `<article class="task"><div class="between"><b>${esc(TASK[x.type])}</b><button type="button" class="btn" data-gtask="${esc(x.id)}">在地圖上看</button></div>
+      <span class="meta">${esc(x.place)}一帶・${esc(M.districtOf(x.hex))}・安全分級 ${esc(TIER[xd[x.type].tier])}・需要 ${x.need} 人</span>
+      ${f === 'approved' ? tkTrack(x) : f === 'pending'
+        ? `<p class="muted">AI 依區域風險及通報線索提出任務建議；市府應確認必要性、執行安全與責任歸屬。</p><div class="acts"><button type="button" class="btn solid" data-taskreview="approved" data-taskid="${esc(x.id)}">核准發布</button><button type="button" class="btn" data-taskreview="returned" data-taskid="${esc(x.id)}">退回調整</button></div>`
+        : `<div class="acts"><button type="button" class="btn" data-taskreview="approved" data-taskid="${esc(x.id)}">重新核准發布</button></div>`}</article>`).join('');
+  return `<section class="sec" aria-label="市府協作任務審核"><div class="between"><h3>志工任務</h3><span class="chip">示範流程</span></div>
+    <p class="lead">AI 提出任務建議，市府核准後才會出現在市民端；發布後可以追蹤有沒有人接、做到哪裡。也可以直接在地圖上點區塊派發。</p>
+    <div class="rdfilter" role="group" aria-label="任務狀態">${F.map(([k, n]) => `<button type="button" data-trv-f="${k}" aria-pressed="${f === k}">${n} ${G[k].length}</button>`).join('')}</div>
+    ${f === 'approved' && G.approved.length ? `<p class="tksum">招募中 <b>${cnt('open')}</b>・進行中 <b>${cnt('active')}</b>・待驗收 <b>${cnt('verify')}</b>・已驗收 <b>${cnt('ok')}</b></p>` : ''}
+    ${cards || `<p class="muted">目前沒有${F.find(([k]) => k === f)[1]}的任務。</p>`}
+    ${list.length > 8 ? `<p class="muted">另有 ${list.length - 8} 項，可以在地圖上點區塊查看。</p>` : ''}
     <p class="muted">此為模擬審核，僅改變本次瀏覽的示範狀態，未對外推播或實際派工。</p></section>`;
 }
-
+/* 地圖彈窗裡的派發區塊：同一個區塊本週可派發的協作任務 */
+function popDispatch(h) {
+  const ts = govTasks(M.week(NW)).filter(x => x.hex === h);
+  if (!ts.length) return '';
+  return `<div class="poptk"><h5>這一帶的協作任務・第 ${NW} 週</h5>${ts.map(x => {
+    const s = S.taskReviews[x.id];
+    return `<div class="poptkrow"><div class="between"><span><b>${esc(TASK[x.type])}</b> <span class="muted">安全分級 ${esc(TIER[xd[x.type].tier])}・需要 ${x.need} 人</span></span>${s === 'approved' ? '' : `<span class="chip">${s === 'returned' ? '已退回' : '待核准'}</span>`}</div>
+      ${s === 'approved' ? tkTrack(x, true) : `<div class="acts"><button type="button" class="btn solid" data-taskreview="approved" data-taskid="${esc(x.id)}">${s === 'returned' ? '重新派發' : '派發任務'}</button>${s === 'returned' ? '' : `<button type="button" class="btn" data-taskreview="returned" data-taskid="${esc(x.id)}">退回</button>`}</div>`}</div>`;
+  }).join('')}<p class="muted">派發後會出現在附近防鼠志工的任務清單；只限 A 級安全任務。</p></div>`;
+}
+function govTaskGo(id) {
+  const t = govTasks(M.week(NW)).find(x => x.id === id);
+  if (!t) return;
+  if (S.week !== NW) setWeek(NW);
+  if (S.view !== 'squad') setView('squad');
+  map.flyTo(t.ll, 16, { duration: RM.matches ? 0 : 0.7 });
+  setTimeout(() => { S.popFn = () => popGovTask(t); showPop(S.popFn()); }, RM.matches ? 50 : 760);
+  if (!wide()) $('#side').classList.add('min');
+}
+function popGovTask(t) {
+  const cur = t.id.startsWith(NW + '-'), s = S.taskReviews[t.id];
+  const body = !cur ? `<table>${row('安全等級', TIER[xd[t.type].tier])}${row('狀態', TSTAT[t.status])}${row('人力', `需要 ${t.need} 人，已加入 ${t.joined} 人`)}</table><p class="muted">這是第 ${t.id.split('-')[0]} 週的紀錄；只有最新一週（第 ${NW} 週）的任務可以派發。</p>`
+    : s === 'approved' ? tkTrack(t)
+    : `<table>${row('安全等級', TIER[xd[t.type].tier])}${row('人力', `需要 ${t.need} 人`)}${row('狀態', s === 'returned' ? '已退回' : '待核准')}</table><div class="acts"><button type="button" class="btn solid" data-taskreview="approved" data-taskid="${esc(t.id)}">${s === 'returned' ? '重新派發' : '派發任務'}</button></div>`;
+  return `<div class="pop"><h4>${TASK[t.type]}</h4><div class="sub">${esc(t.place)}一帶・模擬任務</div>${body}</div>`;
+}
 function popTask(t) {
   const st = tState(t), mine = st === 'mine' || st === 'finished';
   const btn = st === 'finished' ? `<span class="chip ok">已完成 +${xd[t.type].points} 點</span>` : st === 'mine' ? `<button type="button" class="btn solid" data-finish="${t.id}">拍照回報完成</button>`
@@ -2604,23 +2746,25 @@ const DRAW = {
       const z = M.AN.z[w][i];
       if (z < 1.65) continue;
       const hot = M.AN.hot[w][i];
+      if (!cfOn(hot ? (z >= 2.58 ? 'h99' : 'h95') : 'h90')) continue;
       poly(i, { color: P.paper, weight: 1, fillColor: hot ? (z >= 2.58 ? P.hot99 : P.hot95) : P.hot90, fillOpacity: hot ? 0.78 : 0.5 }).on('click', e => pop(e, () => popHex(i, w))).addTo(HX);
     }
   },
   trend(W) {
     for (const i of M.MASKED) {
       const t = nl(M.AN, i, W.w);
-      if (t) poly(i, { color: P.paper, weight: 1, fillColor: P['tr-' + t], fillOpacity: t === 'fade' ? 0.45 : 0.78 }).on('click', e => pop(e, () => popHex(i, W.w))).addTo(HX);
+      if (t && cfOn(t)) poly(i, { color: P.paper, weight: 1, fillColor: P['tr-' + t], fillOpacity: t === 'fade' ? 0.45 : 0.78 }).on('click', e => pop(e, () => popHex(i, W.w))).addTo(HX);
     }
   },
   snake(W) {
     const w = W.w;
-    for (const i of M.MASKED) if (M.AN.hot[w][i]) poly(i, { stroke: false, fillColor: P.hot95, fillOpacity: 0.2, interactive: false }).addTo(HX);
-    for (const i of M.MASKED) if (M.BAIT[i] && w >= M.BAIT[i]) poly(i, { fill: false, color: P['sn-poison'], weight: 1, opacity: 0.7, dashArray: '2 3', interactive: false }).addTo(HX);
+    if (cfOn('rathot')) for (const i of M.MASKED) if (M.AN.hot[w][i]) poly(i, { stroke: false, fillColor: P.hot95, fillOpacity: 0.2, interactive: false }).addTo(HX);
+    if (cfOn('zone')) for (const i of M.MASKED) if (M.BAIT[i] && w >= M.BAIT[i]) poly(i, { fill: false, color: P['sn-poison'], weight: 1, opacity: 0.7, dashArray: '2 3', interactive: false }).addTo(HX);
     const rec = al(M.SNK, M.GRID.H, w);
     for (const i of M.MASKED) {
       if (!rec[i]) continue;
       const k = il(M.AN, M.GRID, i, w, M.BAIT), hid = k === 'hidden';
+      if (!cfOn(k)) continue;
       poly(i, { color: hid ? P['sn-hidden'] : P.paper, weight: hid ? 2 : 1.2, dashArray: hid ? '5 4' : null, fillColor: P['sn-' + k], fillOpacity: hid ? 0.3 : 0.66 })
         .on('click', e => pop(e, () => popHex(i, w))).addTo(HX);
     }
@@ -2633,18 +2777,19 @@ const DRAW = {
     for (const i of M.MASKED) {
       if (!M.BAIT[i] || w < M.BAIT[i]) continue;
       const o = by.get(i), r = o && o.seen ? o.act / o.seen : null;
+      if (!cfOn(r == null ? 'bnone' : r >= 0.5 ? 'bhi' : r >= 0.2 ? 'bmid' : 'blo')) continue;
       poly(i, { color: P['sn-poison'], weight: 1.2, opacity: 0.8, dashArray: '4 3', fillColor: r == null ? P.paper : r >= 0.5 ? P['bait-hi'] : r >= 0.2 ? P['bait-mid'] : P['bait-lo'], fillOpacity: r == null ? 0.3 : 0.6 })
         .on('click', e => pop(e, () => head(i, wkTxt(w)) + `<table>${row('投藥區', `第 ${M.BAIT[i]} 週起`)}${row('這一格的站', `${o ? o.n : 0} 個`)}${row('近 2 週', o && o.seen ? `有觀察 ${o.seen} 個，出現鼠跡 ${o.act} 個（${Math.round((o.act / o.seen) * 100)}%）` : '沒有觀察紀錄')}</table></div>`)).addTo(HX);
     }
-    for (const x of SW.list) L.marker(x.s.ll, { keyboard: false, zIndexOffset: 500, icon: stnIcon(x) }).on('click', e => pop(e, () => popStation(x, w), x.s.ll)).addTo(MK);
-    for (const b of M.baitPtsAll) if (b.w <= w && b.w > w - 8)
+    for (const x of SW.list) if (cfOn(x.s.kind)) L.marker(x.s.ll, { keyboard: false, zIndexOffset: 500, icon: stnIcon(x) }).on('click', e => pop(e, () => popStation(x, w), x.s.ll)).addTo(MK);
+    if (cfOn('bpt')) for (const b of M.baitPtsAll) if (b.w <= w && b.w > w - 8)
       L.circleMarker(Is(b.x, b.y), { renderer: CV, radius: 4, color: P['sn-poison'], weight: 2, fillColor: P.paper, fillOpacity: 1 }).on('click', e => pop(e, () => popPoint('見鼠地圖毒餌通報', b.w))).addTo(PT);
   },
   risk(W) {
     const R = W.risk;
     for (const i of M.MASKED) {
       const c = R.cls[i];
-      if (!c) continue;
+      if (!c || !cfOn(c === 'source' ? 'src' : 'spread')) continue;
       const s = c === 'source';
       poly(i, { color: s ? P.paper : P['risk-spread'], weight: s ? 1 : 1.6, dashArray: s ? null : '4 3', fillColor: s ? P['risk-src'] : P['risk-spread'], fillOpacity: s ? 0.7 : 0.3 })
         .on('click', e => pop(e, () => popRisk(i, W))).addTo(HX);
@@ -2652,6 +2797,7 @@ const DRAW = {
     for (const p of M.POIS) {
       if (p.cvs) continue;
       const f = p.kind === 0, c = false;
+      if (!cfOn(f ? 'food' : 'harbor')) continue;
       L.marker(p.ll, { keyboard: false, icon: L.divIcon({ className: 'poi', html: c ? ICON_CVS : f ? ICON_FOOD : ICON_TREE, iconSize: c ? [20, 18] : f ? [22, 22] : [17, 22], iconAnchor: c ? [10, 14] : f ? [11, 13] : [8, 21] }) })
         .on('click', e => pop(e, () => popPoint(`${c ? '超商' : f ? '食物點' : '可能棲所'}：${p.name}`, W.w))).addTo(MK);
     }
@@ -2661,14 +2807,16 @@ const DRAW = {
     for (let k = Math.max(1, w - 3); k <= w; k++)
       for (const p of M.RBW[k]) {
         const r = p.src === 'r1999';
+        if (!cfOn(r ? 'p1999' : 'pradar')) continue;
         L.circleMarker(p.ll, { renderer: CV, radius: 3.4, color: r ? P.edge : P.pradar, weight: r ? 0.8 : 1.8, fillColor: r ? P.p1999 : P.paper, fillOpacity: r ? 0.9 : 0.85 })
           .on('click', e => pop(e, () => popPoint(r ? '1999 陳情' : '見鼠地圖', p.w, p.desc ? `「${p.desc}」` : ''))).addTo(PT);
       }
-    for (const b of M.baitPts) if (b.w <= w && b.w > w - 8)
+    if (cfOn('pbait')) for (const b of M.baitPts) if (b.w <= w && b.w > w - 8)
       L.circleMarker(Is(b.x, b.y), { renderer: CV, radius: 4, color: P['sn-poison'], weight: 2, fillColor: P.paper, fillOpacity: 1 }).on('click', e => pop(e, () => popPoint('毒餌通報', b.w))).addTo(PT);
     for (let k = Math.max(1, w - 7); k <= w; k++)
       for (const p of M.SNK.points[k]) {
         const v = uc.has(p.sp);
+        if (!cfOn(v ? 'venom' : 'nonvenom')) continue;
         L.circleMarker(p.ll, { renderer: CV, radius: 4, color: v ? P.edge : P.snake, weight: v ? 1 : 2, fillColor: v ? P.snake : P.paper, fillOpacity: 1 })
           .on('click', e => pop(e, () => popPoint(p.sp, p.w, v ? '毒蛇' : '蛇類目擊（模擬）'))).addTo(PT);
       }
@@ -2677,19 +2825,31 @@ const DRAW = {
     const tasks = Td(M.GRID, M.AN, W.risk, W.clue, W.w), gap = Od(M.GRID, W.risk, tasks, SQUADS);
     for (const i of M.MASKED) {
       const c = gap.cls[i];
+      if (c === 'short' && !cfOn('gap') || c === 'over' && !cfOn('over')) continue;
       if (c === 'short') poly(i, { color: P.gap, weight: 1.6, dashArray: '5 4', fillColor: P.gap, fillOpacity: 0.3, interactive: false }).addTo(HX);
       else if (c === 'over') poly(i, { stroke: false, fillColor: P.over, fillOpacity: 0.16, interactive: false }).addTo(HX);
     }
-    for (const t of tasks)
+    for (const t of tasks) if (cfOn('tk-' + t.type))
       L.circleMarker(t.ll, { renderer: CV, radius: t.status === 'open' ? 7 : 5, color: P.edge, weight: t.status === 'open' ? 1.5 : 0.8, fillColor: P['t-' + t.type], fillOpacity: t.status === 'done' ? 0.35 : 0.95 })
-        .on('click', e => pop(e, () => `<div class="pop"><h4>${TASK[t.type]}</h4><div class="sub">${esc(t.place)}一帶・模擬任務</div><table>${row('安全等級', TIER[xd[t.type].tier])}${row('狀態', TSTAT[t.status])}${row('人力', `需要 ${t.need} 人，已加入 ${t.joined} 人`)}</table></div>`)).addTo(PT);
-    for (const s of SHOPS) L.circleMarker(s.ll, { renderer: CV, radius: 4, color: P.edge, weight: 1.2, fillColor: P.shop, fillOpacity: 1 }).on('click', e => pop(e, () => popShop(s))).addTo(PT);
-    for (const q of SQUADS)
+        .on('click', e => pop(e, () => popGovTask(t))).addTo(PT);
+    if (cfOn('shop')) for (const s of SHOPS) L.circleMarker(s.ll, { renderer: CV, radius: 4, color: P.edge, weight: 1.2, fillColor: P.shop, fillOpacity: 1 }).on('click', e => pop(e, () => popShop(s))).addTo(PT);
+    if (cfOn('squad')) for (const q of SQUADS)
       L.circleMarker(q.ll, { renderer: CV, radius: 6 + Math.sqrt(q.members), color: P.paper, weight: 2.5, fillColor: P.squad, fillOpacity: 0.95 })
         .on('click', e => pop(e, () => `<div class="pop"><h4>${esc(q.name)}</h4><div class="sub">${q.members} 人${q.recruiting ? '，招募中' : ''}・模擬隊伍</div><table>${row('組成', `長者 ${q.mix.elder}、居民 ${q.mix.resident}、店家 ${q.mix.shop}、青年 ${q.mix.youth}、方案學員 ${q.mix.program}`)}${row('每週可投入', `約 ${q.capacity} 人次`)}</table></div>`)).addTo(PT);
   }
 };
-const cfOn = k => (S.role === 'gov' && S.view !== 'triage') || !S.cf || S.cf.has(k);
+const cfOn = k => !S.cf || S.cf.has(k);
+const CF_GOV = {
+  triage: ['lv1', 'lv2', 'lv3', 'lv4', 'lv5'],
+  hot: ['h99', 'h95', 'h90'],
+  trend: ['new', 'persist', 'inter', 'fade'],
+  snake: ['cross', 'poison', 'hidden', 'habitat', 'rathot', 'zone'],
+  bait: ['bhi', 'bmid', 'blo', 'bnone', 'monitor', 'bait', 'trap', 'bpt'],
+  risk: ['src', 'spread', 'food', 'harbor'],
+  points: ['p1999', 'pradar', 'pbait', 'venom', 'nonvenom'],
+  squad: ['gap', 'over', 'squad', 'shop', 'tk-clean', 'tk-garbage', 'tk-signs', 'tk-trap', 'tk-shop']
+};
+const cfKeys = () => (S.role === 'gov' ? CF_GOV[S.view] || [] : CFK[S.role]);
 /* 市民與店家：只看區塊熱度（鼠患檢傷站的隱私設計），不畫個別通報 */
 function publicRisk(s){
   return s >= 70 ? {name:'高風險',tip:'政府將優先確認風險來源並安排改善',color:'#D9502F',band:'h92'}
@@ -2784,37 +2944,38 @@ function legend(W) {
   switch (S.view) {
     case 'triage': return ['檢傷分級', fhd + [1, 2, 3, 4, 5].map(l => fb('lv' + l, `<span class="lvdot l${l}">${l}</span>`, LV[l].name, LV[l].short)).join('') +
       note('格子顏色是格內最急的一筆通報；放大到街區可以看到每一筆，點越大代表嚴重度指數越高。')];
-    case 'hot': return ['Gi* 熱點', lg(box(P.hot99), '99% 顯著熱點') + lg(box(P.hot95), '95% 顯著熱點') + lg(box(P.hot90, 0.55), '90%，僅供參考') +
+    case 'hot': return ['Gi* 熱點', fhd + fb('h99', box(P.hot99), '99% 顯著熱點') + fb('h95', box(P.hot95), '95% 顯著熱點') + fb('h90', box(P.hot90, 0.55), '90%，僅供參考') +
       note(`近 4 週顯著熱點 ${W.summary.hot} 格，新興 ${W.summary.newHot}、持續 ${W.summary.persist}。格子邊長 350 公尺。`)];
     case 'trend': {
       const c = { new: 0, persist: 0, inter: 0, fade: 0 };
       M.MASKED.forEach(i => { const t = nl(M.AN, i, W.w); if (t) c[t]++; });
-      return ['熱點趨勢', ['new', 'persist', 'inter', 'fade'].map(k => lg(box(P['tr-' + k], k === 'fade' ? 0.5 : 0.8), TREND[k], c[k] + ' 格')).join('') +
+      return ['熱點趨勢', fhd + ['new', 'persist', 'inter', 'fade'].map(k => fb(k, box(P['tr-' + k], k === 'fade' ? 0.5 : 0.8), TREND[k], c[k] + ' 格')).join('') +
         note('新興：最近 4 週第一次成為熱點。持續：此後六成以上週次是熱點。間歇：時有時無。消退：最近 4 週都不是。')];
     }
     case 'snake': {
       const s = W.summary.snake;
-      return ['蛇鼠判讀', lg(box(P['sn-cross']), '蛇鼠共現', s.cross + ' 格') + lg(box(P['sn-poison']), '二次中毒留意', s.poison + ' 格') + lg(dash(P['sn-hidden']), '疑似鼠低報', s.hidden + ' 格') +
-        lg(box(P['sn-habitat']), '山邊、河濱棲地', s.habitat + ' 格') + lg(box(P.hot95, 0.3), '鼠類熱點') + lg(dash(P['sn-poison']), M.realReports ? '投藥區（毒餌通報 300 公尺內）' : '投藥區（第 18 週起）') +
+      return ['蛇鼠判讀', fhd + fb('cross', box(P['sn-cross']), '蛇鼠共現', s.cross + ' 格') + fb('poison', box(P['sn-poison']), '二次中毒留意', s.poison + ' 格') + fb('hidden', dash(P['sn-hidden']), '疑似鼠低報', s.hidden + ' 格') +
+        fb('habitat', box(P['sn-habitat']), '山邊、河濱棲地', s.habitat + ' 格') + fb('rathot', box(P.hot95, 0.3), '鼠類熱點') + fb('zone', dash(P['sn-poison']), M.realReports ? '投藥區（毒餌通報 300 公尺內）' : '投藥區（第 18 週起）') +
         note('統計近 8 週的蛇類目擊（模擬）。5 月是眼鏡蛇繁殖季，目擊增加多半和老鼠無關。')];
     }
     case 'bait': {
       const SW = M.stationWeek(W.w);
-      return ['餌站觀察', lg(dash(P['sn-poison']), M.realReports ? '投藥區（毒餌通報 300 公尺內）' : '投藥區（第 18 週起）') + lg(box(P['bait-hi'], 0.7), '近 2 週鼠跡比例 50% 以上') + lg(box(P['bait-mid'], 0.7), '20–49%') + lg(box(P['bait-lo'], 0.7), '20% 以下') +
-        lg(stn('monitor', P.paper), '無毒監測餌盒') + lg(stn('bait', P.paper), '上鎖毒餌盒') + lg(stn('bait', P.l2), '有咬痕／部分被吃') + lg(stn('bait', P.hot95), '全被吃') + lg(stn('trap', P['sn-poison']), '捕鼠籠・籠內有鼠') + lg(stn('bait', P.l1), '毒餌外露') + lg(stn('monitor', P.l1), '其他動物接觸') + lg(stn('bait', P.ink), '附近有死鼠') +
+      return ['餌站觀察', fhd + '<h6 class="lgsub">投藥區（依近 2 週鼠跡比例）</h6>' + fb('bhi', box(P['bait-hi'], 0.7), '50% 以上') + fb('bmid', box(P['bait-mid'], 0.7), '20–49%') + fb('blo', box(P['bait-lo'], 0.7), '20% 以下') + fb('bnone', box(P.paper, 0.3), '近 2 週沒有觀察') +
+        '<h6 class="lgsub">站點與通報</h6>' + fb('monitor', stn('monitor', P.paper), '無毒監測餌盒') + fb('bait', stn('bait', P.paper), '上鎖毒餌盒') + fb('trap', stn('trap', P.paper), '捕鼠籠') + fb('bpt', ring(P['sn-poison']), '見鼠地圖毒餌通報') +
+        '<h6 class="lgsub">站點顏色＝最近一次觀察</h6>' + lg(stn('bait', P.l2), '有咬痕／部分被吃') + lg(stn('bait', P.hot95), '全被吃') + lg(stn('trap', P['sn-poison']), '籠內有鼠') + lg(stn('bait', P.l1), '毒餌外露、其他動物接觸') +
         note(SW.list.length ? `第 ${W.w} 週 ${SW.list.length} 個站，本週觀察 ${SW.seenN} 個、${SW.actN} 個出現鼠跡。虛線框是超過 2 週沒人觀察的站。餌站為模擬資料。` : '這一週還沒有設置餌站；模擬情境的投藥區從第 18 週開始。')];
     }
     case 'risk': {
       let a = 0, b = 0;
       M.MASKED.forEach(i => { const c = W.risk.cls[i]; if (c === 'source') a++; else if (c === 'spread') b++; });
-      return ['風險地圖', lg(box(P['risk-src']), '高風險源頭（前 10%）', a + ' 格') + lg(dash(P['risk-spread']), '可能擴散範圍', b + ' 格') +
-        lg(`<span class="sw icon">${ICON_FOOD}</span>`, '食物點（市場、夜市）') + lg(`<span class="sw icon">${ICON_TREE}</span>`, '可能棲所（公園、河濱、工地）') + (M.CVS.length ? lg(`<i class="sw" style="background:${P.l2};border-radius:50%"></i>`, `超商 ${M.CVS.length.toLocaleString('zh-TW')} 家${M.CVS[0].sim ? '（模擬）' : ''}；越暖色設施越多，放大到街區顯示`) + `<div class="cvsrow"><button type="button" class="btn" data-cvstoggle aria-pressed="${M.CVS_ON}">超商因子：${M.CVS_ON ? '開' : '關'}</button></div>` : '') +
+      return ['風險地圖', fhd + fb('src', box(P['risk-src']), '高風險源頭（前 10%）', a + ' 格') + fb('spread', dash(P['risk-spread']), '可能擴散範圍', b + ' 格') +
+        fb('food', `<span class="sw icon">${ICON_FOOD}</span>`, '食物點（市場、夜市）') + fb('harbor', `<span class="sw icon">${ICON_TREE}</span>`, '可能棲所（公園、河濱、工地）') + (M.CVS.length ? lg(`<i class="sw" style="background:${P.l2};border-radius:50%"></i>`, `超商 ${M.CVS.length.toLocaleString('zh-TW')} 家${M.CVS[0].sim ? '（模擬）' : ''}；越暖色設施越多，放大到街區顯示`) + `<div class="cvsrow"><button type="button" class="btn" data-cvstoggle aria-pressed="${M.CVS_ON}">超商因子：${M.CVS_ON ? '開' : '關'}</button></div>` : '') +
         note(`食物點與棲所是優先查看的地方，不是已確認的鼠窩。${W.risk.available.sewer ? '' : '目前沒有下水道資料，權重已重新分配。'}`)];
     }
-    case 'points': return ['通報點位', (M.realReports ? '' : lg(dot(P.p1999), '1999 陳情')) + lg(ring(P.pradar), '見鼠地圖') + (M.realReports ? lg(ring(P['sn-poison']), '毒餌通報') : '') +
-      lg(dot(P.snake), '毒蛇目擊') + lg(ring(P.snake), '無毒蛇目擊') + note(`鼠類通報顯示近 4 週，蛇類顯示近 8 週。${M.realReports ? '1999 開放資料沒有位置，不畫點。' : ''}`)];
-    default: return ['打鼠特攻隊', lg(dash(P.gap), '人力缺口') + lg(box(P.over, 0.4), '人力集中，可支援他區') + lg(dot(P.squad), '特攻隊據點') + lg(dot(P.shop), '三不店家（自願公開）') +
-      Object.keys(TASK).map(k => lg(dot(P['t-' + k]), TASK[k])).join('') + note('任務、隊伍與店家為模擬資料。')];
+    case 'points': return ['通報點位', fhd + (M.realReports ? '' : fb('p1999', dot(P.p1999), '1999 陳情')) + fb('pradar', ring(P.pradar), '見鼠地圖') + (M.realReports ? fb('pbait', ring(P['sn-poison']), '毒餌通報') : '') +
+      fb('venom', dot(P.snake), '毒蛇目擊') + fb('nonvenom', ring(P.snake), '無毒蛇目擊') + note(`鼠類通報顯示近 4 週，蛇類顯示近 8 週。${M.realReports ? '1999 開放資料沒有位置，不畫點。' : ''}`)];
+    default: return ['打鼠特攻隊', fhd + fb('gap', dash(P.gap), '人力缺口') + fb('over', box(P.over, 0.4), '人力集中，可支援他區') + fb('squad', dot(P.squad), '特攻隊據點') + fb('shop', dot(P.shop), '三不店家（自願公開）') +
+      Object.keys(TASK).map(k => fb('tk-' + k, dot(P['t-' + k]), TASK[k] + '任務')).join('') + note('任務、隊伍與店家為模擬資料。')];
   }
 }
 
@@ -2916,20 +3077,54 @@ function rxPrescription(a,W){
  <p class="v2-source">示範工作流程，不會實際通知局處或民眾；覆核應依後續監測資料，不以完成任務直接視為鼠患消失。</p></div>`;
 }
 function rxGovIntro(){return `<section class="sec"><h3>城市處方箋｜市府治理中心</h3><p class="lead">有鼠請回答：政府主責源頭改善、AI 協助判讀與建議、市民及店家自願協作。以案件五級檢傷決定急迫程度；依問題來源建議一個或多個執行單位，經市府核准後追蹤成果。</p><div class="v2-trio"><span class="v2-risk v2-r1"><i></i>政府：五級案件檢傷</span><span class="v2-risk v2-r2"><i></i>民眾與店家：三級區域風險</span></div><p class="v2-source">風險評分、主管機關與派工流程為產品示意，不是臺北市政府正式派工結果。</p></section>`}
+S.qv = 'area';
+// 志工任務只在最新一週產生；依區塊整理，區塊卡用來顯示「這一帶有幾項志工任務」
+const tasksByHex = () => { const m = new Map(); for (const x of govTasks(M.week(NW))) { if (!m.has(x.hex)) m.set(x.hex, []); m.get(x.hex).push(x); } return m; };
+function mineRow(r) {
+  const short = r.text.length > 30 ? r.text.slice(0, 30) + '…' : r.text;
+  return `<article class="mrow${r.dispatched ? '' : ' new'}"><span class="lvdot l${r.lv}">${r.lv || '轉'}</span>
+    <div class="mb"><b>「${esc(short)}」</b><span class="meta">${r.hex >= 0 ? esc(M.placeOf(r.hex)) + '一帶' : '臺北市界外'}・${wkTxt(NW)}</span>
+      <span class="mto">${r.dispatched ? `<span class="chip ok">已派案：${esc(r.dispatched)}</span>` : `建議派給 ${esc(r.lv ? LV[r.lv].to : r.t.to)}`}</span>
+      <details><summary>判讀依據與嚴重度</summary><span class="why">${esc(r.t.why.join('；'))}</span><span class="sevrow">${sevPill(r.sev)}</span></details></div>
+    <div class="macts">${r.dispatched ? '' : `<button type="button" class="btn solid" data-dispc="${r.id}">${r.lv ? DISP[r.lv] : '轉介'}</button>`}<button type="button" class="btn" data-minego="${r.id}">地圖</button></div></article>`;
+}
 function renderQueue(W) {
-  const el = $('#p-queue'), keep = el.dataset.k === W.w + '/' + S.filter + '/' + S.mine.length, st = el.scrollTop;
-  el.dataset.k = W.w + '/' + S.filter + '/' + S.mine.length;
+  const el = $('#p-queue'), qv = S.qv;
+  const key = [W.w, S.filter, S.mine.length, S.mine.filter(r => r.dispatched).length, qv].join('/'), keep = el.dataset.k === key, st = el.scrollTop;
+  el.dataset.k = key;
   const list = S.filter ? W.list.filter(a => a.lv === S.filter) : W.list;
   const doneN = W.list.filter(a => S.done.has(W.w + ':' + a.h)).length;
-  let h = rxGovIntro() + renderTaskApprovals();
-  if (S.mine.length) h += `<div class="group">新進市民通報（${S.mine.filter(r => !r.dispatched).length} 筆待派）</div>` + S.mine.map(mineCard).join('');
-  h += `<p class="lead">本週 ${W.reps.length} 筆通報落在 ${W.list.length} 個區塊，每個區塊依最急的一筆暫定案件級別，同級再參考嚴重度排序。V1 原始規則仍以事件類型輔助派案，新版另設城市處方箋展示權責分工；正式分級標準尚待驗證。${M.W1999 ? `1999 陳情本週 ${M.W1999[W.w]} 筆（沒有位置，不列入分級）。` : ''}${doneN ? `已處理 ${doneN}／${W.list.length}。` : ''}</p>`;
-  h += `<div class="lvbar" role="group" aria-label="依級別篩選">` + [0, 1, 2, 3, 4, 5].map(l => `<button type="button" data-f="${l}" aria-pressed="${S.filter === l}">${l ? `<span class="lvdot l${l}">${l}</span>` : '<span class="all">全部</span>'}<b>${l ? W.lvN[l] : W.list.length}</b></button>`).join('') + '</div>';
-  if (!W.list.length) h += '<div class="empty">這一週沒有通報。拖曳下方時間軸換一週。</div>';
-  else if (!list.length) h += `<div class="empty">這一週沒有 ${S.filter} 級區塊。<br><button type="button" class="btn" data-f="0">看全部區塊</button></div>`;
-  h += list.slice(0, 40).map(a => areaCard(a, W) + rxPrescription(a, W)).join('');
-  if (list.length > 40) h += `<p class="muted">另有 ${list.length - 40} 個區塊，可以用上方的級別篩選。</p>`;
-  el.innerHTML = h;
+  const pendMine = S.mine.filter(r => !r.dispatched), pendTask = govTasks(M.week(NW)).filter(x => !S.taskReviews[x.id]).length;
+  const tabs = [['area', '區塊派案', W.list.length - doneN], ['mine', '市民通報', pendMine.length], ['task', '志工任務', pendTask]];
+  let head = `<div class="qtabs" role="tablist" aria-label="派案類別">${tabs.map(([k, n, c]) => `<button type="button" role="tab" data-qv="${k}" aria-selected="${qv === k}">${n}${c ? `<span class="qn${k === 'mine' ? ' hot' : ''}">${c}</span>` : ''}</button>`).join('')}</div>`;
+  let h = '';
+  if (qv === 'area') {
+    head += `<div class="lvbar" role="group" aria-label="依級別篩選">` + [0, 1, 2, 3, 4, 5].map(l => `<button type="button" data-f="${l}" aria-pressed="${S.filter === l}">${l ? `<span class="lvdot l${l}">${l}</span>` : '<span class="all">全部</span>'}<b>${l ? W.lvN[l] : W.list.length}</b></button>`).join('') + '</div>';
+    if (pendMine.length) h += `<button type="button" class="qnotice" data-qv="mine"><b>${pendMine.length} 筆新的市民通報待派</b><span>前往處理 ›</span></button>`;
+    h += `<p class="lead">第 ${W.w} 週 ${W.reps.length} 筆通報落在 ${W.list.length} 個區塊，每個區塊依最急的一筆定級，派給負責的局處。${doneN ? `已派 ${doneN}／${W.list.length}。` : ''}${M.W1999 ? `1999 陳情本週 ${M.W1999[W.w]} 筆（沒有位置，不列入分級）。` : ''}</p>`;
+    if (!W.list.length) h += '<div class="empty">這一週沒有通報。拖曳下方時間軸換一週。</div>';
+    else if (!list.length) h += `<div class="empty">這一週沒有 ${S.filter} 級區塊。<br><button type="button" class="btn" data-f="0">看全部區塊</button></div>`;
+    const tm = W.w === NW ? tasksByHex() : null;
+    h += list.slice(0, 40).map(a => {
+      const ts = tm && tm.get(a.h), pend = ts ? ts.filter(x => !S.taskReviews[x.id]).length : 0;
+      const link = ts ? `<button type="button" class="qlink" data-go="${a.h}">這一帶另有 ${ts.length} 項志工任務${pend ? `（${pend} 項待核准）` : ''}，可在地圖彈窗派發 ›</button>` : '';
+      return areaCard(a, W).replace('</div></article>', link + '</div></article>') + rxPrescription(a, W);
+    }).join('');
+    if (list.length > 40) h += `<p class="muted">另有 ${list.length - 40} 個區塊，可以用上方的級別篩選。</p>`;
+  } else if (qv === 'mine') {
+    const done = S.mine.filter(r => r.dispatched);
+    h += `<p class="lead">市民剛送出的通報會先出現在這裡，AI 已判讀級別並建議負責單位。確認後派案，同時會併入所在區塊。</p>`;
+    if (!S.mine.length) h += '<div class="empty">目前沒有新的市民通報。可以切到市民身份送一筆試試看。</div>';
+    if (pendMine.length) {
+      h += `<div class="between qgrp"><b>待派 ${pendMine.length} 筆</b>${pendMine.length > 1 ? `<button type="button" class="btn solid" data-dispall>全部依建議派案</button>` : ''}</div>`;
+      h += pendMine.slice().sort((a, b) => (a.lv || 9) - (b.lv || 9) || b.sev.score - a.sev.score).map(mineRow).join('');
+    }
+    if (done.length) h += `<details class="qdone"${pendMine.length ? '' : ' open'}><summary>已派案 ${done.length} 筆</summary>${done.map(mineRow).join('')}</details>`;
+  } else {
+    h += renderTaskApprovals();
+  }
+  h += `<details class="qabout"><summary>關於城市處方箋與派案</summary>${rxGovIntro()}<p class="muted">區塊派案：交給市府權責單位處理，依五級檢傷決定急迫程度。志工任務：A 級安全任務，由市府核准後開放市民認領，是區塊派案之外的補充人力，不取代清潔隊與專業防治。</p></details>`;
+  el.innerHTML = `<div class="qhead">${head}</div>` + h;
   el.scrollTop = keep ? st : 0;
 }
 function dispatch(h) {
@@ -3025,7 +3220,7 @@ function renderOverview(W) {
   let h = `<div class="seg" role="group" aria-label="統計範圍"><button type="button" data-ovscope="all" aria-pressed="${!wkScope}">全期</button><button type="button" data-ovscope="week" aria-pressed="${wkScope}">第 ${W.w} 週</button></div>`;
   h += `<div class="between"><h3>分級分布</h3><button type="button" class="btn" data-gotab="p-rules">通報資料的限制</button></div>`;
   h += `<p class="lead">${wkScope ? `第 ${W.w} 週（${Us(W.w)}）` : '第 1–41 週'}共 ${total.toLocaleString('zh-TW')} 筆通報（${M.realReports ? '見鼠地圖' : '1999 陳情與見鼠地圖，模擬'}${mine.length ? '，含市民通報' : ''}），逐筆依 AI 判讀分級並計算嚴重度指數。點級別或嚴重度可以篩選下方清單。</p>`;
-  h += '<div class="lvbar l7" role="group" aria-label="依級別篩選通報">' +
+  h += '<div class="lvbar l7 stick" role="group" aria-label="依級別篩選通報">' +
     [null, 1, 2, 3, 4, 5, 0].map(k => `<button type="button" data-ovf="${k == null ? 'all' : k}" aria-pressed="${f === k}" aria-label="${k == null ? '全部' : k ? k + ' 級' + LV[k].name : '轉介'} ${k == null ? total : n[k]} 筆">${k == null ? '<span class="all">全部</span>' : `<span class="lvdot l${k}">${k || '轉'}</span>`}<b>${(k == null ? total : n[k]).toLocaleString('zh-TW')}</b><span class="k">${k == null ? '筆' : pct(k) + '%'}</span></button>`).join('') + '</div>';
   h += '<h3>嚴重度分布</h3>';
   h += `<div class="sevbar" aria-hidden="true">${[4, 3, 2, 1].map(k => (bc[k] ? `<i class="b${k}" style="flex:${bc[k]}"></i>` : '')).join('')}</div>`;
@@ -3091,7 +3286,8 @@ function renderBaitPane(W) {
   el.innerHTML = h;
 }
 function focusStation(id) {
-  const x = M.stationWeek(wk()).list.find(o => o.s.id === id);
+  let x = M.stationWeek(wk()).list.find(o => o.s.id === id);
+  if (!x && S.role === 'gov') { setWeek(NW); x = M.stationWeek(NW).list.find(o => o.s.id === id); }
   if (!x) return;
   if (S.role === 'gov' && S.view !== 'bait') { S.view = 'bait'; render(); }
   map.flyTo(x.s.ll, 17, { duration: RM.matches ? 0 : 0.7 });
@@ -3339,7 +3535,9 @@ function taskCard(t) {
 }
 function nearStations() {
   return M.stationWeek(NW).list.map(x => Object.assign({}, x, { d: dist(x.s.ll, S.me.ll) })).filter(x => x.d <= 2500)
-    .sort((a, b) => (a.cur && a.cur.mine ? 1 : 0) - (b.cur && b.cur.mine ? 1 : 0) || b.overdue - a.overdue || a.d - b.d);
+    .sort((a, b) => (a.cur && a.cur.mine ? 1 : 0) - (b.cur && b.cur.mine ? 1 : 0) || stAsk(b) - stAsk(a) || b.overdue - a.overdue || a.d - b.d);
+}
+function stAsk(x) { return S.stPush[x.s.id] && x.overdue && !(x.cur && x.cur.mine) ? 1 : 0;
 }
 function stationCard(x) {
   const s = x.s, K = KIND[s.kind], mine = x.cur && x.cur.mine;
@@ -3347,7 +3545,7 @@ function stationCard(x) {
   const act = mine ? `<span class="chip ok">你本週看到：${M.ST[s.kind][x.cur.st]}</span>`
     : S.obsOpen === s.id ? `<div class="obsf"><p class="muted">從外面看就好，不開盒、不碰餌、不碰籠。你看到：</p><div class="chips">${Object.entries(M.ST[s.kind]).map(([k, n]) => `<button type="button" class="btn" data-obsst="${k}" data-obsid="${s.id}">${n}</button>`).join('')}</div></div>`
     : `<button type="button" class="btn solid" data-obs="${s.id}">我要觀察</button>`;
-  return `<article class="task" id="stc-${s.id}"><div class="between"><b>觀察${K} ${esc(s.code)}</b><span class="chip">+8 點</span></div>
+  return `<article class="task${stAsk(x) ? ' ask' : ''}" id="stc-${s.id}">${stAsk(x) ? '<span class="askchip">市府請求協助：這個站超過 2 週沒人看</span>' : ''}<div class="between"><b>觀察${K} ${esc(s.code)}</b><span class="chip">+8 點</span></div>
     <span class="meta">${esc(M.placeOf(s.hex))}一帶・離你${distTxt(x.d)}・${esc(last)}${x.overdue ? '・超過 2 週沒人看' : ''}</span>
     <div class="acts"><button type="button" class="btn" data-stn="${s.id}">在地圖上看</button>${act}</div></article>`;
 }
@@ -3402,7 +3600,7 @@ function renderMe() {
     ${mineHTML()}
     <div class="sec"><h3>徽章</h3><div class="badges">${BADGES.map(([n, f]) => `<span class="badge${f(c) ? '' : ' off'}">${n}</span>`).join('')}</div></div>
     <div class="sec"><h3>完成紀錄</h3><ol class="done" reversed>${c.log.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>
-    <div class="sec"><h3>安全分級</h3><ul class="rules-s"><li>A 防鼠志工：清潔公共空間、垃圾代收、店家輔導。不碰老鼠、鼠屍與鼠糞。</li><li>B 社區防鼠巡查員：鼠跡確認、捕鼠籠巡查。受訓後戴手套與口罩，只看不開籠。</li><li>C 社區環境衛生師或合格病媒防治人員：投藥、處理鼠屍與清理鼠糞。</li></ul></div>
+    <div class="sec"><h3>安全分級</h3><ul class="rules-s"><li>A 防鼠志工：清潔公共空間、垃圾代收、店家輔導，以及從外面觀察餌盒與捕鼠籠（只看不碰）。不碰老鼠、鼠屍與鼠糞。</li><li>B 社區防鼠巡查員（受訓）：鼠跡確認、捕鼠籠的檢查與記錄、籠內有鼠時到場處理。戴手套與口罩。</li><li>C 社區環境衛生師或合格病媒防治人員：投藥、處理鼠屍與清理鼠糞。</li></ul></div>
     <p class="muted">點數有三種用法：到兌換點換垃圾袋、洗碗精等小物；累積簽到取得里民活動優先登記資格；集滿 12 區寶石換實體徽章。兌換點、品項與點數皆為模擬，正式規則需由市府訂定。</p>`;
 }
 
@@ -3568,7 +3766,7 @@ function showHero() {
 /* ---------- 主流程 ---------- */
 function renderTabs() {
   const fresh = S.mine.filter(r => !r.dispatched).length, obsAl = M.stationWeek(NW).list.filter(x => x.cur && x.cur.mine && M.ALERT[x.cur.st]).length;
-  const badge = { 'p-queue': fresh, 'p-bait': obsAl, 'm-alert': S.shop.alerts.length };
+  const badge = { 'p-queue': fresh, 'p-bait': obsAl, 'm-alert': S.shop.alerts.length, 'c-tasks': nearStations().filter(stAsk).length };
   const cur = S.tab[S.role], open = !$('#side').classList.contains('min');
   $('#side').classList.toggle('full', S.role === 'gov');
   $('#tabs').innerHTML = ROLES[S.role].map(([id, n]) => `<button type="button" role="tab" id="t-${id}" aria-selected="${cur === id}" aria-controls="${id}" data-pane="${id}">${n}${badge[id] ? `<span class="dot">${badge[id]}</span>` : ''}</button>`).join('') +
@@ -3585,7 +3783,7 @@ function render() {
   drawPins();
   const [t, b] = legend(W);
   $('#lgTitle').textContent = t;
-  $('#lgCount').textContent = S.cf && S.role !== 'gov' || S.cf && S.view === 'triage' ? `已篩選 ${S.cf.size} 項` : '';
+  $('#lgCount').textContent = S.cf ? `已篩選 ${S.cf.size} 項` : '';
   $('#lgBody').innerHTML = b;
   const lm = $('#lgMobile');
   if (lm) lm.innerHTML = `<h3>圖例：${t}</h3>${b}`;
@@ -3656,7 +3854,8 @@ function openReport() {
   syncReport();
   updateReport();
   const d = $('#c-draft');
-  if (d) d.focus();
+  if (d && wide()) d.focus();
+  else { const x = $('#repClose'); if (x) x.focus({ preventScroll: true }); }
 }
 function closeReport() {
   if (!S.repOpen) return;
@@ -3717,7 +3916,11 @@ $('#side').addEventListener('click', e => {
   else if ((b = q('[data-f]'))) { S.filter = +b.dataset.f; renderQueue(M.week(S.week)); }
   else if ((b = q('[data-go]'))) focusArea(+b.dataset.go);
   else if ((b = q('[data-rx]'))) { const k=b.dataset.rxkey; RX_CASES[k]=Math.min(4,Math.max(0,rxStage(k)+(b.dataset.rx==='next'?1:-1))); toast('示範：城市處方箋已更新至「'+RX_STAGES[RX_CASES[k]]+'」'); renderQueue(M.week(S.week)); }
-  else if ((b = q('[data-taskreview]'))) { S.taskReviews[b.dataset.taskid] = b.dataset.taskreview; toast(b.dataset.taskreview === 'approved' ? '示範：市府已核准發布任務' : '示範：任務已退回或撤回'); render(); }
+  else if ((b = q('[data-taskreview]'))) { tkSet(b.dataset.taskid, b.dataset.taskreview); toast(b.dataset.taskreview === 'approved' ? '示範：任務已派發，附近志工會收到通知' : '示範：任務已退回或撤回'); render(); refreshPop(); }
+  else if ((b = q('[data-trv-f]'))) { S.trvF = b.dataset.trvF; renderQueue(M.week(S.week)); }
+  else if ((b = q('[data-tk-push]'))) { S.tk.pushed[b.dataset.tkPush] = true; toast('示範：已推播給 1 公里內的防鼠志工，陸續有人加入'); render(); refreshPop(); }
+  else if ((b = q('[data-tk-ok]'))) { S.tk.verified[b.dataset.tkOk] = true; delete S.tk.redo[b.dataset.tkOk]; toast('示範：驗收通過，志工已計點'); render(); refreshPop(); }
+  else if ((b = q('[data-tk-redo]'))) { const k = b.dataset.tkRedo; S.tk.redo[k] = true; S.card.finished.delete(k); toast('示範：已退回，請志工補拍照片'); render(); refreshPop(); }
   else if ((b = q('[data-disp]'))) dispatch(+b.dataset.disp);
   else if ((b = q('[data-dispc]'))) dispatchMine(b.dataset.dispc);
   else if ((b = q('[data-minego]'))) goMine(b.dataset.minego);
@@ -3750,10 +3953,24 @@ document.addEventListener('click', e => {
   const q = s => e.target.closest(s);
   let b;
   if ((b = q('[data-tryh]'))) { S.loc = M.hexLL(+b.dataset.tryh); map.closePopup(); setTab('p-try'); updateTry(); }
-  else if ((b = q('[data-fly]'))) { map.flyTo(M.hexLL(+b.dataset.fly), 15, { duration: RM.matches ? 0 : 0.7 }); if (!wide()) $('#side').classList.add('min'); }
+  else if ((b = q('[data-gtask]'))) govTaskGo(b.dataset.gtask);
+  else if ((b = q('[data-fly]'))) {
+    const h = +b.dataset.fly;
+    if (S.role === 'gov' && M.week(S.week).areas.get(h)) focusArea(h);
+    else { map.flyTo(M.hexLL(h), 15, { duration: RM.matches ? 0 : 0.7 }); setTimeout(() => { S.popFn = () => popHex(h, wk()); showPop(S.popFn()); }, RM.matches ? 50 : 760); if (!wide()) $('#side').classList.add('min'); }
+  }
+  else if ((b = q('#popModal [data-stpush]'))) {
+    const id = b.dataset.stpush, x = M.stationWeek(wk()).list.find(o => o.s.id === id);
+    S.stPush[id] = true; toast('示範：已推播給 1 公里內的防鼠志工，請他們幫忙觀察'); render(); renderTabs();
+    if (x) $('#popBody').innerHTML = popStation(x, wk());
+  }
   else if ((b = q(':is(.leaflet-popup,#popModal) [data-join]'))) joinTask(b.dataset.join);
   else if ((b = q(':is(.leaflet-popup,#popModal) [data-finish]'))) finishTask(b.dataset.finish);
   else if ((b = q(':is(.leaflet-popup,#popModal) [data-obs]'))) { S.obsOpen = b.dataset.obs; map.closePopup(); setTab('c-tasks'); renderTasks(M.week(NW)); const c = $('#stc-' + S.obsOpen); if (c) c.scrollIntoView({ block: 'center' }); }
+  else if ((b = q('#popModal [data-taskreview]'))) { tkSet(b.dataset.taskid, b.dataset.taskreview); toast(b.dataset.taskreview === 'approved' ? '示範：任務已派發，附近志工會收到通知' : '示範：任務已退回或撤回'); render(); refreshPop(); }
+  else if ((b = q('#popModal [data-tk-push]'))) { S.tk.pushed[b.dataset.tkPush] = true; toast('示範：已推播給 1 公里內的防鼠志工，陸續有人加入'); render(); refreshPop(); }
+  else if ((b = q('#popModal [data-tk-ok]'))) { S.tk.verified[b.dataset.tkOk] = true; delete S.tk.redo[b.dataset.tkOk]; toast('示範：驗收通過，志工已計點'); render(); refreshPop(); }
+  else if ((b = q('#popModal [data-tk-redo]'))) { const k = b.dataset.tkRedo; S.tk.redo[k] = true; S.card.finished.delete(k); toast('示範：已退回，請志工補拍照片'); render(); refreshPop(); }
   else if ((b = q('[data-rephere]'))) { S.report.ll = M.hexLL(+b.dataset.rephere); map.closePopup(); openReport(); drawPins(); }
   else if (q('[data-openrep]')) openReport();
   else if ((b = q('[data-enter]'))) enter(b.dataset.enter);
@@ -3907,6 +4124,12 @@ addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#rdModal').hidd
 $('#side').addEventListener('click', e => {
   const q = s => e.target.closest(s);
   let b;
+  if ((b = q('[data-qv]'))) { S.qv = b.dataset.qv; renderQueue(M.week(S.week)); $('#p-queue').scrollTop = 0; return; }
+  if (q('[data-dispall]')) {
+    const ps = S.mine.filter(r => !r.dispatched);
+    ps.forEach(r => { r.dispatched = r.lv ? LV[r.lv].to : r.t.to; if (dist(r.ll, S.shop.ll) < 500) S.shop.alerts.unshift({ text: r.text.length > 24 ? r.text.slice(0, 24) + '…' : r.text, to: r.dispatched, sev: r.sev }); });
+    toast(`已依建議派案 ${ps.length} 筆`); render(); return;
+  }
   if (q('[data-rd-open]')) rdOpen();
   else if ((b = q('[data-rd-ticket]'))) { rdOpen(); RD.ticket = S.card.tickets[+b.dataset.rdTicket]; RD.step = 4; rdRender(); }
   else if (q('[data-sb-rank]')) { setTab('m-rank'); renderTabs(); }
@@ -4027,7 +4250,7 @@ $('#legend').addEventListener('click', e => {
     if (!S.cf) S.cf = new Set([k]);
     else if (S.cf.has(k)) S.cf.delete(k);
     else S.cf.add(k);
-    if (S.cf && (!S.cf.size || S.cf.size === CFK[S.role].length)) S.cf = null;
+    if (S.cf && (!S.cf.size || S.cf.size === cfKeys().length)) S.cf = null;
   }
   map.closePopup();
   render();
