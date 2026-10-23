@@ -918,9 +918,15 @@ textarea{display:block;width:100%;min-height:78px;border:1.5px solid var(--edge)
 .toast.on{opacity:1}
 
 /* ---------- 開場 ---------- */
-#hero{position:fixed;inset:0;z-index:1000;background:radial-gradient(ellipse at 30% 50%,var(--hero-a) 0%,var(--hero-b) 72%);display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:30px;padding:60px 6vw 48px;transition:opacity .6s,transform .6s,visibility 0s}
+#hero{position:fixed;inset:0;z-index:1150;background:radial-gradient(ellipse at 30% 50%,var(--hero-a) 0%,var(--hero-b) 72%);display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:30px;padding:60px 6vw 48px;transition:opacity .6s,transform .6s,visibility 0s}
 #hero.gone{opacity:0;transform:scale(1.04);pointer-events:none;visibility:hidden;transition:opacity .6s,transform .6s,visibility 0s .6s}
 .radar{width:min(42vw,560px);aspect-ratio:1;justify-self:center}
+.radar[hidden]{display:none}
+.heromag{justify-self:center;width:min(44vw,620px);perspective:1100px}
+.magfloat{transform:rotateX(var(--mx,0deg)) rotateY(var(--my,0deg));transition:transform .25s ease-out;animation:magbob 6s ease-in-out infinite}
+.magsvg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 18px 28px rgba(30,30,40,.18))}
+@keyframes magbob{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -10px;rotate:-1.5deg}}
+@media (prefers-reduced-motion:reduce){.magfloat{animation:none;transition:none}}
 .radar svg{width:100%;height:100%;overflow:visible}
 .sweep{transform-origin:50% 50%;animation:spin 5s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -1041,6 +1047,13 @@ body:not([data-role=gov]) .leaflet-bottom.leaflet-right{bottom:12px}
 .badges{display:flex;flex-wrap:wrap;gap:5px}
 .badge{font-size:12px;font-weight:700;border:1.4px solid var(--edge);border-radius:999px;padding:1px 10px;background:var(--lime);color:#2a2a2a}
 .badge.off{background:var(--paper);color:var(--muted);border:1.4px dashed var(--line);font-weight:500}
+.badges.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:10px 6px}
+.bgrid .badge{display:flex;flex-direction:column;align-items:center;gap:4px;border:0;background:none;padding:0;border-radius:0;color:var(--ink);text-align:center;line-height:1.3}
+.bgrid .badge svg{display:block;width:56px;height:56px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.22))}
+.bgrid .badge .bn{font-size:11.5px;font-weight:700}
+.bgrid .badge.off{border:0;background:none}
+.bgrid .badge.off svg{filter:grayscale(1);opacity:.28}
+.bgrid .badge.off .bn{color:var(--muted);font-weight:500}
 ol.done,ul.rules-s{margin:0;padding-left:20px;font-size:12.5px}
 .ladder{display:grid;gap:6px}
 .ladder div{border:1.5px solid var(--line);border-radius:12px;padding:7px 10px;font-size:12px;color:var(--muted);background:var(--paper)}
@@ -1154,6 +1167,7 @@ details.sevd[open] summary::before{content:'▾ '}
 @media (max-width:860px){
   #hero{grid-template-columns:1fr;padding:48px 16px 60px;overflow:auto;align-content:start;gap:12px}
   .radar{width:min(64vw,280px)}
+  .heromag{width:min(62vw,300px)}
   .hstats{gap:18px}
   .hstats b{font-size:28px}
   .hero-foot{position:static;margin-top:8px}
@@ -1503,7 +1517,54 @@ table.rank .shop.sm{display:inline-grid;width:18px;height:18px;font-size:10px;ma
 </head>
 <body data-role="gov">
 <section id="hero" aria-label="開場">
-  <div class="radar"><svg id="radar" viewBox="0 0 400 400" aria-hidden="true"></svg></div>
+  <div class="heromag" aria-hidden="true"><div class="magfloat"><svg viewBox="0 0 640 760" class="magsvg">
+<defs>
+<linearGradient id="mgChrome" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ffffff"/><stop offset=".1" stop-color="#d4d9e0"/><stop offset=".2" stop-color="#4a525d"/><stop offset=".3" stop-color="#f7f9fb"/><stop offset=".42" stop-color="#a7b0bc"/><stop offset=".52" stop-color="#252a31"/><stop offset=".63" stop-color="#e9ecf1"/><stop offset=".76" stop-color="#7c8592"/><stop offset=".88" stop-color="#1f242a"/><stop offset="1" stop-color="#cfd4db"/></linearGradient>
+<linearGradient id="mgChrome2" x1="1" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2a2f36"/><stop offset=".3" stop-color="#f3f5f8"/><stop offset=".55" stop-color="#6d7581"/><stop offset=".8" stop-color="#ffffff"/><stop offset="1" stop-color="#3a4048"/></linearGradient>
+<linearGradient id="mgCyl" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#3b414a"/><stop offset=".18" stop-color="#c7cdd5"/><stop offset=".32" stop-color="#ffffff"/><stop offset=".5" stop-color="#9aa3af"/><stop offset=".78" stop-color="#2b3037"/><stop offset="1" stop-color="#8d96a2"/></linearGradient>
+<linearGradient id="mgHandle" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#6d5f06"/><stop offset=".12" stop-color="#d9c420"/><stop offset=".28" stop-color="#fff9b8"/><stop offset=".4" stop-color="#f7e548"/><stop offset=".72" stop-color="#e3cd27"/><stop offset=".9" stop-color="#9b8a0e"/><stop offset="1" stop-color="#5a4e04"/></linearGradient>
+<linearGradient id="mgSky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#8fbfee"/><stop offset=".55" stop-color="#cfe4f8"/><stop offset="1" stop-color="#f6fbff"/></linearGradient>
+<radialGradient id="mgVig" cx=".5" cy=".5" r=".5">
+<stop offset=".62" stop-color="#0b1a2e" stop-opacity="0"/><stop offset=".9" stop-color="#0b1a2e" stop-opacity=".22"/><stop offset="1" stop-color="#0b1a2e" stop-opacity=".5"/></radialGradient>
+<radialGradient id="mgSpec" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<clipPath id="mgLens"><circle cx="300" cy="250" r="172"/></clipPath>
+<filter id="mgBlur8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="mgBlur3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="mgBlur18" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<ellipse cx="390" cy="728" rx="150" ry="12" fill="#2a2a2a" opacity=".2" filter="url(#mgBlur8)"/>
+<g transform="rotate(-32 300 250)">
+  <!-- handle -->
+  <rect x="268" y="520" width="64" height="300" rx="30" fill="url(#mgHandle)"/>
+  <rect x="268" y="520" width="64" height="300" rx="30" fill="none" stroke="#3d3503" stroke-opacity=".35" stroke-width="1.5"/>
+  <rect x="283" y="540" width="7" height="255" rx="3.5" fill="#fff" opacity=".55" filter="url(#mgBlur3)"/>
+  <rect x="270" y="806" width="60" height="26" rx="12" fill="url(#mgCyl)"/>
+  <!-- collar -->
+  <rect x="262" y="476" width="76" height="56" rx="10" fill="url(#mgCyl)"/>
+  <rect x="262" y="500" width="76" height="4" fill="#1d2127" opacity=".45"/>
+  <rect x="284" y="430" width="32" height="50" rx="6" fill="url(#mgCyl)"/>
+  <!-- lens content -->
+  <g clip-path="url(#mgLens)">
+    <rect x="120" y="70" width="360" height="360" fill="#f3f8ee"/>
+    <g transform="rotate(32 300 250)"><svg id="radar" x="70" y="20" width="460" height="460" viewBox="0 0 400 400" overflow="visible"></svg></g>
+    <circle cx="300" cy="250" r="172" fill="url(#mgVig)"/>
+    <ellipse cx="236" cy="150" rx="92" ry="48" fill="url(#mgSpec)" opacity=".75" transform="rotate(-28 236 150)"/>
+    <path d="M168 230A136 136 0 0 1 250 118" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".75" filter="url(#mgBlur3)"/>
+    <ellipse cx="392" cy="360" rx="44" ry="14" fill="#fff" opacity=".28" transform="rotate(-38 392 360)" filter="url(#mgBlur3)"/>
+  </g>
+  <!-- chrome ring -->
+  <circle cx="300" cy="250" r="190" fill="none" stroke="url(#mgChrome)" stroke-width="30"/>
+  <circle cx="300" cy="250" r="174" fill="none" stroke="url(#mgChrome2)" stroke-width="5"/>
+  <circle cx="300" cy="250" r="205" fill="none" stroke="#1d2127" stroke-opacity=".45" stroke-width="1.5"/>
+  <path d="M135 170A188 188 0 0 1 230 75" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9" filter="url(#mgBlur3)"/>
+</g>
+</svg></div></div>
   <div class="hero-txt">
     <div class="kicker" id="heroWeek">第 19 週</div>
     <h1>有鼠請回答</h1>
@@ -1522,6 +1583,11 @@ table.rank .shop.sm{display:inline-grid;width:18px;height:18px;font-size:10px;ma
   <div class="hero-foot">行政區界：內政部國土測繪中心（真實）｜通報、雨量與蛇類目擊：北市鼠情週報的模擬資料，不代表實際鼠情</div>
 </section>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="bgGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1cf"/><stop offset=".35" stop-color="#e2b36f"/><stop offset=".6" stop-color="#f8dca4"/><stop offset="1" stop-color="#b9843f"/></linearGradient>
+<linearGradient id="bgSilver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#a9b6c8"/><stop offset=".6" stop-color="#eef2f8"/><stop offset="1" stop-color="#7c8aa0"/></linearGradient>
+<clipPath id="bgClip"><circle cx="32" cy="32" r="25.5"/></clipPath>
+</defs></svg>
 <div id="map" role="application" aria-label="北市鼠情檢傷地圖"></div>
 
 <header class="topbar">
@@ -2397,6 +2463,36 @@ const ROLES = {
 const LEVELS = [{ min: 0, name: '見習隊員' }, { min: 50, name: '正式隊員' }, { min: 150, name: '小隊長' }, { min: 400, name: '特攻隊長' }];
 const BADGES = [['第一次清潔', c => c.done.clean >= 1], ['鼠跡偵探', c => c.done.signs >= 3], ['捕鼠籠守望者', c => c.done.trap >= 3],
   ['垃圾代收達人', c => c.done.garbage >= 5], ['三不推手', c => c.done.shop >= 1], ['連續出勤 7 天', c => c.streak >= 7], ['餌站觀察員', c => (c.done.obs || 0) >= 3]];
+
+const BADGE_ART = (() => {
+  const G = 'url(#bgGold)', ln = (d, w = 2.2, c = G) => `<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const sh = (d, f, w = 2, c = G) => `<path d="${d}" fill="${f}" stroke="${c}" stroke-width="${w}" stroke-linejoin="round"/>`;
+  const spark = (x, y, r = 3, c = '#fff') => `<path d="M${x} ${y - r}L${x + r * .32} ${y - r * .32}L${x + r} ${y}L${x + r * .32} ${y + r * .32}L${x} ${y + r}L${x - r * .32} ${y + r * .32}L${x - r} ${y}L${x - r * .32} ${y - r * .32}Z" fill="${c}"/>`;
+  const rays = c => Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6, b = a + Math.PI / 18; return `<path d="M32 32L${(32 + 40 * Math.cos(a)).toFixed(1)} ${(32 + 40 * Math.sin(a)).toFixed(1)}L${(32 + 40 * Math.cos(b)).toFixed(1)} ${(32 + 40 * Math.sin(b)).toFixed(1)}Z" fill="${c}"/>`; }).join('');
+  const field = {
+    arc: (a, b) => `<rect width="64" height="64" fill="${a}"/><ellipse cx="32" cy="60" rx="36" ry="20" fill="${b}"/>${ln('M-2 42Q32 32 66 42', 1.6)}`,
+    diag: (a, b) => `<rect width="64" height="64" fill="${a}"/><path d="M0 44L64 24V64H0Z" fill="${b}"/>${ln('M0 44L64 24', 1.6)}`,
+    split: (a, b) => `<rect width="64" height="64" fill="${a}"/><path d="M40 0Q30 32 46 64H64V0Z" fill="${b}"/>${ln('M40 0Q30 32 46 64', 1.6)}`,
+    rays: (a, b) => `<rect width="64" height="64" fill="${a}"/>${rays(b)}`
+  };
+  const wrap = (rim, f, icon) => `<svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><circle cx="32" cy="32" r="30.5" fill="${rim}"/><circle cx="32" cy="32" r="30.5" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="1"/><g clip-path="url(#bgClip)">${f}</g><circle cx="32" cy="32" r="25.5" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1.2"/>${icon}</svg>`;
+  return [
+    // 第一次清潔：掃把
+    wrap(G, field.arc('#8fd6c0', '#fff4dc'), ln('M43 12L32 33', 3.2) + sh('M25 33H39L42 47H22Z', '#f6c56b') + ln('M27 37L26 46M32 37V46M37 37L38 46', 1.4) + spark(47, 38, 4) + spark(18, 22, 2.6)),
+    // 鼠跡偵探：放大鏡＋腳印
+    wrap(G, field.diag('#b9a7f0', '#7a68d6'), sh('M28 18a10 10 0 1 1 0 20a10 10 0 1 1 0-20Z', '#eef6ff') + ln('M35.5 35.5L45 45', 4.2) + '<g fill="#7a68d6"><circle cx="25" cy="29" r="2.2"/><circle cx="31" cy="26" r="1.8"/><circle cx="22.5" cy="24.5" r="1.3"/><circle cx="26.5" cy="22.5" r="1.3"/><circle cx="33.5" cy="22.3" r="1.1"/><circle cx="29.7" cy="21" r="1.1"/></g>' + spark(46, 18, 3.4)),
+    // 捕鼠籠守望者：籠子
+    wrap(G, field.rays('#3f6fc4', 'rgba(255,255,255,.12)'), ln('M24 18Q32 10 40 18', 2.2) + sh('M18 22H46V44H18Z', 'rgba(255,255,255,.88)') + ln('M23 22V44M28 22V44M33 22V44M38 22V44M43 22V44', 1.5) + ln('M18 33H46', 1.3) + spark(50, 16, 3.2) + spark(14, 46, 2.4)),
+    // 垃圾代收達人：垃圾桶
+    wrap(G, field.split('#f4a261', '#e76f51'), sh('M20 20H44V25H20Z', '#ffe2c4') + ln('M28 20V16H36V20', 1.8) + sh('M22 25H42L39.5 47H24.5Z', '#fff8ef') + ln('M28 29L28.8 43M32 29V43M36 29L35.2 43', 1.5) + spark(48, 40, 3.4) + spark(15, 18, 2.4)),
+    // 三不推手：店面＋勾
+    wrap(G, field.arc('#9ccc6b', '#36773f'), sh('M16 22H48L50 29H14Z', '#fff') + '<path d="M22 22L20 29M28.5 22L27.5 29M35.5 22L36.5 29M42 22L44 29" stroke="#d9502f" stroke-width="3.4"/>' + ln('M16 22H48L50 29H14Z', 1.8) + sh('M18 29H46V46H18Z', '#fffaf1') + '<path d="M25 37.5L30 42L39.5 33" fill="none" stroke="#36773f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' + spark(50, 15, 3.4)),
+    // 連續出勤 7 天：銀框＋7 DAY
+    wrap('url(#bgSilver)', field.rays('#1f2a44', 'rgba(255,255,255,.08)'), '<text x="32" y="36" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="900" font-size="24" fill="url(#bgSilver)" stroke="#1f2a44" stroke-width=".6">7</text><text x="32" y="46" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="7.5" letter-spacing="1.5" fill="#dfe6f1">DAY</text>' + spark(18, 22, 3.6, '#ffe08a') + spark(47, 20, 2.6, '#ffe08a') + spark(46, 44, 2, '#fff')),
+    // 餌站觀察員：眼睛＋餌盒
+    wrap(G, field.diag('#5fb7b0', '#2f7f86'), sh('M18 22Q32 10 46 22Q32 34 18 22Z', '#fff') + '<circle cx="32" cy="22" r="4.6" fill="#2f7f86"/><circle cx="33.4" cy="20.6" r="1.4" fill="#fff"/>' + sh('M19 34H45V46H19Z', '#fff4dc') + '<circle cx="32" cy="40" r="2.6" fill="#2f7f86"/>' + spark(49, 33, 3) + spark(14, 33, 2.2))
+  ];
+})();
 const BADGE_SVG = ['<svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><path d="M24.0 3.0 L28.7 6.6 L34.5 5.8 L36.7 11.3 L42.2 13.5 L41.4 19.3 L45.0 24.0 L41.4 28.7 L42.2 34.5 L36.7 36.7 L34.5 42.2 L28.7 41.4 L24.0 45.0 L19.3 41.4 L13.5 42.2 L11.3 36.7 L5.8 34.5 L6.6 28.7 L3.0 24.0 L6.6 19.3 L5.8 13.5 L11.3 11.3 L13.5 5.8 L19.3 6.6Z" fill="#bfe0a6" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="24" r="12.5" fill="#fffdf8" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><path d="M18 24.5l4.2 4.2L30.5 20" fill="none" stroke="#36773f" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>','<svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><path d="M15 30 L10 46 L16 42.5 L19.5 47 L23 33Z" fill="#36773f" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><path d="M33 30 L38 46 L32 42.5 L28.5 47 L25 33Z" fill="#36773f" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><path d="M24.0 2.0 L27.4 4.9 L31.8 3.8 L33.7 7.9 L38.1 8.8 L38.0 13.3 L41.5 16.0 L39.5 20.0 L41.5 24.0 L38.0 26.7 L38.1 31.2 L33.7 32.1 L31.8 36.2 L27.4 35.1 L24.0 38.0 L20.6 35.1 L16.2 36.2 L14.3 32.1 L9.9 31.2 L10.0 26.7 L6.5 24.0 L8.5 20.0 L6.5 16.0 L10.0 13.3 L9.9 8.8 L14.3 7.9 L16.2 3.8 L20.6 4.9Z" fill="#4f9a5a" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="20" r="11" fill="#fffdf8" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><path d="M24.0 13.0 L25.9 17.8 L31.1 18.2 L27.1 21.5 L28.4 26.6 L24.0 23.8 L19.6 26.6 L20.9 21.5 L16.9 18.2 L22.1 17.8Z" fill="#4f9a5a" stroke="#2a2a2a" stroke-width="1.4" stroke-linejoin="round"/></svg>','<svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><path d="M14 2 L22 18 L28 18 L20 2Z" fill="#d9502f" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><path d="M34 2 L26 18 L20 18 L28 2Z" fill="#4f8fd6" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="30" r="15" fill="#f2c230" stroke="#2a2a2a" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="30" r="10.5" fill="#ffe08a" stroke="#c9961a" stroke-width="1.5"/><g fill="none" stroke="#2a2a2a" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M16.5 32.5 L28 25.5 L31.5 28.5 L31.5 35 L16.5 35 Z"/><path d="M16.5 32.5 L31.5 28.5"/><circle cx="21.5" cy="33.5" r="0.9"/><circle cx="27" cy="32.3" r="1.2"/></g><path d="M36 9 l1.2 3 3 1.2 -3 1.2 -1.2 3 -1.2 -3 -3 -1.2 3 -1.2Z" fill="#fff" stroke="#2a2a2a" stroke-width="1"/></svg>'];
 const STIERS = [
   { k: 't1', mark: '✓', name: '三不防鼠認證', desc: '不留食物、不留孔洞、不堆雜物；現場評核通過即取得，疊在衛福部餐飲衛生分級上。' },
@@ -3598,7 +3694,7 @@ function renderMe() {
     <div class="prog"><i style="width:${nx ? ((earned - lvl.min) / (nx.min - lvl.min)) * 100 : 100}%"></i></div><div class="muted">連續出勤 ${c.streak} 天・累積簽到 ${c.checkins} 次・行政區寶石 ${c.gems}／12</div></div>
     ${c.tickets.length ? `<div class="sec"><h3>我的兌換券</h3><div class="tickets">${c.tickets.map((k, i) => `<div class="ticket"><div><b>${esc(k.loc.name)}</b><span class="muted">${esc(k.lines.map(l => l.n + (l.q > 1 ? ' ×' + l.q : '')).join('、'))}・${k.until} 前領取</span></div><button type="button" class="qbtn" data-rd-ticket="${i}">出示</button></div>`).join('')}</div></div>` : ''}
     ${mineHTML()}
-    <div class="sec"><h3>徽章</h3><div class="badges">${BADGES.map(([n, f]) => `<span class="badge${f(c) ? '' : ' off'}">${n}</span>`).join('')}</div></div>
+    <div class="sec"><h3>徽章</h3><div class="badges bgrid">${BADGES.map(([n, f], i) => `<span class="badge${f(c) ? '' : ' off'}" title="${f(c) ? '已取得' : '尚未取得'}">${BADGE_ART[i] || ''}<span class="bn">${n}</span></span>`).join('')}</div></div>
     <div class="sec"><h3>完成紀錄</h3><ol class="done" reversed>${c.log.map(x => `<li>${esc(x)}</li>`).join('')}</ol></div>
     <div class="sec"><h3>安全分級</h3><ul class="rules-s"><li>A 防鼠志工：清潔公共空間、垃圾代收、店家輔導，以及從外面觀察餌盒與捕鼠籠（只看不碰）。不碰老鼠、鼠屍與鼠糞。</li><li>B 社區防鼠巡查員（受訓）：鼠跡確認、捕鼠籠的檢查與記錄、籠內有鼠時到場處理。戴手套與口罩。</li><li>C 社區環境衛生師或合格病媒防治人員：投藥、處理鼠屍與清理鼠糞。</li></ul></div>
     <p class="muted">點數有三種用法：到兌換點換垃圾袋、洗碗精等小物；累積簽到取得里民活動優先登記資格；集滿 12 區寶石換實體徽章。兌換點、品項與點數皆為模擬，正式規則需由市府訂定。</p>`;
@@ -4222,6 +4318,12 @@ $('#locModal').addEventListener('compositionend', locSearch);
 addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#locModal').hidden) locClose(); });
 $('#btnRules').addEventListener('click', () => setTab('p-rules'));
 $('#btnHero').addEventListener('click', showHero);
+$('#hero').addEventListener('pointermove', e => {
+  if (RM.matches || e.pointerType !== 'mouse') return;
+  const f = $('.magfloat'); if (!f) return;
+  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+  f.style.setProperty('--my', (x * 14).toFixed(2) + 'deg'); f.style.setProperty('--mx', (-y * 10).toFixed(2) + 'deg');
+});
 $('#btnHome').addEventListener('click', showHero);
 const CFK = { citizen: ['h60', 'h80', 'h92', 'clean', 'garbage', 'monitor', 'bait', 'trap'], merchant: ['h60', 'h80', 'h92', 's1', 's2', 's3'], gov: ['lv1', 'lv2', 'lv3', 'lv4', 'lv5'] };
 function setMenu(o) { $('#navmenu').hidden = !o; $('#burger').setAttribute('aria-expanded', String(o)); $('#burger').setAttribute('aria-label', o ? '關閉選單' : '開啟選單'); }
